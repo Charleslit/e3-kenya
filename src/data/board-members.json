@@ -1,0 +1,38 @@
+{
+  "boardMembers": [
+    {
+      "id": "1",
+      "name": "Jane Doe",
+      "role": "Executive Director",
+      "bio": "Jane has been leading E3 Kenya's initiatives for over 5 years, focusing on sustainable community development and women's empowerment.",
+      "imageUrl": "/images/board/jane-doe.jpg",
+      "socialLinks": {
+        "linkedin": "https://linkedin.com/in/jane-doe",
+        "email": "jane@e3kenya.org",
+        "twitter": "https://twitter.com/janedoe"
+      }
+    },
+    {
+      "id": "2",
+      "name": "John Smith",
+      "role": "Operations Director",
+      "bio": "With over 10 years of experience in NGO management, John oversees the day-to-day operations and project implementation.",
+      "imageUrl": "/images/board/john-smith.jpg",
+      "socialLinks": {
+        "linkedin": "https://linkedin.com/in/john-smith",
+        "email": "john@e3kenya.org"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Sarah Johnson",
+      "role": "Community Relations",
+      "bio": "Sarah works directly with local communities to ensure our initiatives meet their needs and create lasting impact.",
+      "imageUrl": "/images/board/sarah-johnson.jpg",
+      "socialLinks": {
+        "email": "sarah@e3kenya.org",
+        "twitter": "https://twitter.com/sarahjohnson"
+      }
+    }
+  ]
+} 
