@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { Container } from '@/components/ui/container'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { PieChart, DollarSign, Users, Globe } from 'lucide-react'
+import { DollarSign, Users, Globe } from 'lucide-react'
 import Link from 'next/link'
 
 const reports = [
@@ -48,7 +48,7 @@ export default function TransparencyPage() {
         <h1 className="heading-1 mb-8">Transparency Report</h1>
         <p className="text-lg text-muted-foreground mb-12 max-w-3xl">
           We believe in complete transparency with our donors and stakeholders. 
-          Here's a detailed breakdown of our operations, impact, and financial allocations.
+          Here&apos;s a detailed breakdown of our operations, impact, and financial allocations.
         </p>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -96,7 +96,7 @@ export default function TransparencyPage() {
                 <div>
                   <h3 className="font-semibold">2024 Annual Report</h3>
                   <p className="text-sm text-muted-foreground">
-                    Detailed overview of our first year's operations and impact
+                    Detailed overview of our first year&apos;s operations and impact
                   </p>
                 </div>
                 <Link 

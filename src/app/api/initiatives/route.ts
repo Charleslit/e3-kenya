@@ -14,7 +14,7 @@ export async function POST(request: Request) {
     return NextResponse.json(initiative, { status: 201 })
   } catch (error) {
     return NextResponse.json(
-      { error: 'Failed to create initiative' },
+      { message : 'Failed to create initiative', error: error },
       { status: 400 }
     )
   }

@@ -29,11 +29,11 @@ export function MissionSection() {
         >
           <p className="text-lg leading-relaxed">
             At E3 we believe in a world where every Kenyan girl and woman is empowered to be an active participant 
-            in shaping her own life and community. We don't just bring solutions; we work hand-in-hand with local 
+            in shaping her own life and community. We don&apos;t just bring solutions; we work hand-in-hand with local 
             women and girls to develop sustainable programs that reflect their needs and aspirations.
           </p>
           <p className="text-lg leading-relaxed">
-            Whether it's through education, mentorship, or creating income-generating programs, we are committed 
+            Whether it&apos;s through education, mentorship, or creating income-generating programs, we are committed 
             to engaging with and empowering Kenyan girls and women as they seek greater freedoms and opportunities 
             in their communities.
           </p>

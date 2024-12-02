@@ -94,7 +94,7 @@ export function HerdNeedsSection() {
         className="mt-16 text-center"
       >
         <p className="text-muted-foreground mb-6">
-          Have questions about how you can help? We'd love to hear from you!
+          Have questions about how you can help? We&apos;d love to hear from you!
         </p>
         <Button variant="outline" size="lg" asChild>
           <Link href="/contact">Contact Us</Link>

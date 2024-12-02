@@ -55,7 +55,7 @@ export default function ImpactPage() {
                 <CardContent>
                   <p className="mb-4">{story.story}</p>
                   <blockquote className="border-l-4 border-primary pl-4 italic">
-                    "{story.quote}"
+                    &quot;{story.quote}&quot;
                     <footer className="text-sm text-muted-foreground mt-2">
                       — {story.author}
                     </footer>

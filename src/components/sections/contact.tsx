@@ -20,7 +20,7 @@ export function ContactSection() {
             Get in Touch
           </h2>
           <p className="mt-4 text-muted-foreground">
-            We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+            We&apos;d love to hear from you. Send us a message and we&apos;ll respond as soon as possible.
           </p>
           
           <div className="mt-8 space-y-4">
@@ -65,7 +65,7 @@ export function ContactSection() {
             <CardHeader>
               <CardTitle>Send us a Message</CardTitle>
               <CardDescription>
-                Fill out the form below and we'll get back to you.
+                Fill out the form below and we&apos;ll get back to you.
               </CardDescription>
             </CardHeader>
             <CardContent>
