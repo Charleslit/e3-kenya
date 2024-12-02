@@ -4,9 +4,11 @@ export interface BoardMember {
   role: string;
   bio: string;
   imageUrl: string;
-  socialLinks?: {
+  title: string;
+  quote?: string;
+  socialLinks: {
     linkedin?: string;
-    twitter?: string;
     email?: string;
+    twitter?: string;
   };
 } 

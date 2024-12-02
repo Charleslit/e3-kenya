@@ -1,4 +1,4 @@
-export interface Initiative {
+export type Initiative = {
   id: string;
   title: string;
   description: string;
@@ -8,7 +8,6 @@ export interface Initiative {
     location: string;
     duration: string;
   };
-  status: 'ongoing' | 'completed' | 'planned';
+  status: "ongoing" | "planned" | "completed";
   highlights?: string[];
-  partner?: string;
-} 
+}; 

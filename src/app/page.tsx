@@ -12,7 +12,12 @@ import { NewsletterSection } from '@/components/sections/newsletter'
 import { HerdNeedsSection } from '@/components/sections/herd-needs'
 
 import initiativesData from '@/data/initiatives.json'
+import type { Initiative } from '@/types/Initiative'
 import boardMembersData from '@/data/board-members.json'
+import type { BoardMember } from '@/types/BoardMember'
+
+const initiatives = initiativesData.initiatives as unknown as Initiative[]
+const boardMembers = boardMembersData.boardMembers as unknown as BoardMember[]
 
 export default function Home() {
   return (
@@ -49,7 +54,7 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ delay: 0.4, duration: 0.6 }}
       >
-        <InitiativesShowcase initiatives={initiativesData.initiatives} />
+        <InitiativesShowcase initiatives={initiatives} />
       </motion.div>
 
       <motion.div
@@ -58,7 +63,7 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ delay: 0.5, duration: 0.6 }}
       >
-        <BoardMembers members={boardMembersData.boardMembers} />
+        <BoardMembers members={boardMembers} />
       </motion.div>
 
       <motion.div
