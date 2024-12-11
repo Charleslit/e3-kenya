@@ -21,6 +21,7 @@ import { BoardMember } from '@/types/BoardMember'
 const initiatives = initiativesJson.initiatives as Initiative[]
 const boardMembers = boardMembersJson.boardMembers as BoardMember[]
 
+
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">

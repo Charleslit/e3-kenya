@@ -8,8 +8,9 @@ export interface BoardMember {
   quote?: string;
   location?: string;
   socialLinks?: {
+
     linkedin?: string;
-    twitter?: string;
     email?: string;
+    twitter?: string;
   };
 } 

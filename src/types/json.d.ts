@@ -3,4 +3,3 @@ declare module "*.json" {
     [key: string]: unknown;
   };
   export default content;
-} 

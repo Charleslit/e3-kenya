@@ -1,4 +1,4 @@
-export interface Initiative {
+export type Initiative = {
   id: string;
   title: string;
   description: string;

@@ -112,6 +112,7 @@ export default function ImpactPage() {
               </ParallaxSection>
             ))}
           </div>
+
         </div>
       </Container>
     </PageTransition>
