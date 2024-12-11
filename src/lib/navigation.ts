@@ -15,6 +15,10 @@ export const mainNavItems = [
         title: "Western Kenya",
         href: "/initiatives/western-kenya",
       },
+      {
+        title: "Nairobi Outreach",
+        href: "/initiatives/nairobi-outreach",
+      },
     ],
   },
   {
@@ -22,16 +26,20 @@ export const mainNavItems = [
     href: "/board",
   },
   {
-    title: "Chronicles",
+    title: "Herd Chronicles",
     href: "/chronicles",
   },
   {
-    title: "Impact",
+    title: "Our Impact",
     href: "/impact",
   },
   {
     title: "Contact",
     href: "/contact",
+  },
+  {
+    title: "Gallery",
+    href: "/gallery",
   },
 ] as const
 
@@ -47,5 +55,32 @@ export const footerNavItems = [
   {
     title: "Transparency",
     href: "/transparency",
+  },
+  {
+    title: "Volunteer",
+    href: "/volunteer",
+  },
+] as const
+
+export const socialLinks = [
+  {
+    title: "Twitter",
+    href: "https://twitter.com/e3kenya",
+    icon: "twitter",
+  },
+  {
+    title: "Facebook",
+    href: "https://facebook.com/e3kenya",
+    icon: "facebook",
+  },
+  {
+    title: "Instagram",
+    href: "https://instagram.com/e3kenya",
+    icon: "instagram",
+  },
+  {
+    title: "LinkedIn",
+    href: "https://linkedin.com/company/e3kenya",
+    icon: "linkedin",
   },
 ] as const 

@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss"
-import { fontFamily } from "tailwindcss/defaultTheme"
 
 const config = {
   darkMode: ["class"],
@@ -20,9 +19,9 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["Raleway", ...fontFamily.sans],
-        serif: ["Crimson Text", ...fontFamily.serif],
-        display: ["Montserrat", ...fontFamily.sans],
+        sans: ['var(--font-montserrat)', 'system-ui'],
+        serif: ['var(--font-crimson)', 'Georgia'],
+        display: ['var(--font-raleway)', 'system-ui'],
       },
       colors: {
         border: "hsl(var(--border))",

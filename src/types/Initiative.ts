@@ -9,6 +9,6 @@ export interface Initiative {
     duration: string;
   };
   status: 'ongoing' | 'completed' | 'planned';
-  highlights?: string[];
   partner?: string;
+  highlights?: string[];
 } 

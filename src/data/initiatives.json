@@ -3,45 +3,20 @@
     {
       "id": "1",
       "title": "Osiligi Pad Project",
-      "description": "Currently, we are working on an exciting initiative in partnership with MWEGO, a women's empowerment group in Maasai Mara, to produce reusable, eco-friendly menstrual pads in the United States and then distribute the pads to adolescent girls in Kenya.",
-      "imageUrl": "/images/initiatives/osiligi.jpg",
+      "description": "Providing reusable menstrual pads and sewing training to empower local communities.",
+      "imageUrl": "/images/backgrounds/mission-bg.jpg",
       "impact": {
         "beneficiaries": 2500,
         "location": "Maasai Mara",
-        "duration": "October 2024 - Present"
+        "duration": "Ongoing"
       },
       "status": "ongoing",
+      "partner": "MWEGO",
       "highlights": [
-        "Distributed 2,500 menstrual pads",
-        "Provided 5 portable sewing machines",
-        "Trained 25 women and 10 adolescent girls",
-        "Distributed to 5 area schools",
-        "Plans for follow-up training in June"
+        "2,500 pads distributed",
+        "25 women trained",
+        "10 adolescent girls trained"
       ]
-    },
-    {
-      "id": "2",
-      "title": "Western Kenya Distribution",
-      "description": "A Sisterherd Strong board member has distributed menstrual pads in western Kenya, expanding our reach to support more communities.",
-      "imageUrl": "/images/initiatives/western-kenya.jpg",
-      "impact": {
-        "beneficiaries": 300,
-        "location": "Western Kenya",
-        "duration": "2024 - Present"
-      },
-      "status": "ongoing"
-    },
-    {
-      "id": "3",
-      "title": "Nairobi Outreach",
-      "description": "Working with colleagues to establish distribution networks in two locations across Nairobi, with plans for follow-up evaluations and expansion.",
-      "imageUrl": "/images/initiatives/nairobi.jpg",
-      "impact": {
-        "beneficiaries": 0,
-        "location": "Nairobi",
-        "duration": "Planned"
-      },
-      "status": "planned"
     }
   ]
 } 

@@ -10,9 +10,16 @@ import { TestimonialsSection } from '@/components/sections/testimonials'
 import { PartnersSection } from '@/components/sections/partners'
 import { NewsletterSection } from '@/components/sections/newsletter'
 import { HerdNeedsSection } from '@/components/sections/herd-needs'
+import { GallerySection } from '@/components/sections/gallery'
 
-import initiativesData from '@/data/initiatives.json'
-import boardMembersData from '@/data/board-members.json'
+// Import data with type assertions to ensure correct types
+import initiativesJson from '@/data/initiatives.json'
+import boardMembersJson from '@/data/board-members.json'
+import { Initiative } from '@/types/Initiative'
+import { BoardMember } from '@/types/BoardMember'
+
+const initiatives = initiativesJson.initiatives as Initiative[]
+const boardMembers = boardMembersJson.boardMembers as BoardMember[]
 
 export default function Home() {
   return (
@@ -49,7 +56,7 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ delay: 0.4, duration: 0.6 }}
       >
-        <InitiativesShowcase initiatives={initiativesData.initiatives} />
+        <InitiativesShowcase initiatives={initiatives} />
       </motion.div>
 
       <motion.div
@@ -58,7 +65,7 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ delay: 0.5, duration: 0.6 }}
       >
-        <BoardMembers members={boardMembersData.boardMembers} />
+        <BoardMembers members={boardMembers} />
       </motion.div>
 
       <motion.div
@@ -67,7 +74,7 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ delay: 0.6, duration: 0.6 }}
       >
-        <HerdNeedsSection />
+        <TestimonialsSection />
       </motion.div>
 
       <motion.div
@@ -76,7 +83,7 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ delay: 0.7, duration: 0.6 }}
       >
-        <TestimonialsSection />
+        <HerdNeedsSection />
       </motion.div>
 
       <motion.div
@@ -96,6 +103,8 @@ export default function Home() {
       >
         <NewsletterSection />
       </motion.div>
+
+      <GallerySection />
     </div>
   )
 }

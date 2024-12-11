@@ -1,0 +1,28 @@
+{
+  "partners": [
+    {
+      "id": "usaid",
+      "name": "USAID",
+      "logo": "/images/partners/usaid.png",
+      "description": "Supporting sustainable development initiatives"
+    },
+    {
+      "id": "gates",
+      "name": "Gates Foundation",
+      "logo": "/images/partners/gates.png",
+      "description": "Empowering communities through education"
+    },
+    {
+      "id": "un-women",
+      "name": "UN Women",
+      "logo": "/images/partners/un-women.png",
+      "description": "Advancing gender equality and women's empowerment"
+    },
+    {
+      "id": "red-cross",
+      "name": "Kenya Red Cross",
+      "logo": "/images/partners/red-cross.png",
+      "description": "Collaborating for community health and welfare"
+    }
+  ]
+} 

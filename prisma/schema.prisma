@@ -1,0 +1,74 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Donation {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  amount        Float
+  currency      String   @default("USD")
+  status        String
+  paymentMethod String
+  paymentId     String
+  firstName     String
+  lastName      String
+  email         String
+  isAnonymous   Boolean  @default(false)
+  initiative    String?
+  campaign      String?
+  receiptNumber String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  metadata      Json?
+
+  @@index([email])
+  @@index([status])
+  @@index([paymentMethod])
+}
+
+model VolunteerApplication {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  firstName      String
+  lastName       String
+  email          String
+  position       String
+  experience     String
+  availability   String
+  additionalInfo String?
+  status         String   @default("PENDING") // PENDING, APPROVED, REJECTED, CONTACTED
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([email])
+  @@index([status])
+  @@index([position])
+}
+
+model SiteSettings {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  siteName        String
+  siteDescription String?
+  contactEmail    String
+  donationGoal    Float
+  stripePublicKey String
+  stripeSecretKey String
+  sendgridApiKey  String
+  updatedAt       DateTime @updatedAt
+}
+
+model NotificationSettings {
+  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
+  emailNotifications Boolean  @default(true)
+  newDonationAlert   Boolean  @default(true)
+  newVolunteerAlert  Boolean  @default(true)
+  weeklyReports      Boolean  @default(false)
+  monthlyReports     Boolean  @default(true)
+  updatedAt          DateTime @updatedAt
+}
