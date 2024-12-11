@@ -1,4 +1,6 @@
 declare module "*.json" {
-  const value: Record<string, unknown>;
-  export default value;
+  const content: {
+    [key: string]: unknown;
+  };
+  export default content;
 } 

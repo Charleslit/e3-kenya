@@ -52,6 +52,7 @@ export function TestimonialsSection() {
               <CardContent className="pt-6">
                 <Quote className="h-8 w-8 text-primary mb-4" />
                 <p className="mb-6 text-muted-foreground">
+                  &ldquo;{testimonial.content}&rdquo;
                   &quot;{testimonial.content}&quot;
                 </p>
                 <div className="flex items-center gap-4">

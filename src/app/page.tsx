@@ -10,14 +10,17 @@ import { TestimonialsSection } from '@/components/sections/testimonials'
 import { PartnersSection } from '@/components/sections/partners'
 import { NewsletterSection } from '@/components/sections/newsletter'
 import { HerdNeedsSection } from '@/components/sections/herd-needs'
+import { GallerySection } from '@/components/sections/gallery'
 
-import initiativesData from '@/data/initiatives.json'
-import type { Initiative } from '@/types/Initiative'
-import boardMembersData from '@/data/board-members.json'
-import type { BoardMember } from '@/types/BoardMember'
+// Import data with type assertions to ensure correct types
+import initiativesJson from '@/data/initiatives.json'
+import boardMembersJson from '@/data/board-members.json'
+import { Initiative } from '@/types/Initiative'
+import { BoardMember } from '@/types/BoardMember'
 
-const initiatives = initiativesData.initiatives as unknown as Initiative[]
-const boardMembers = boardMembersData.boardMembers as unknown as BoardMember[]
+const initiatives = initiativesJson.initiatives as Initiative[]
+const boardMembers = boardMembersJson.boardMembers as BoardMember[]
+
 
 export default function Home() {
   return (
@@ -72,7 +75,7 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ delay: 0.6, duration: 0.6 }}
       >
-        <HerdNeedsSection />
+        <TestimonialsSection />
       </motion.div>
 
       <motion.div
@@ -81,7 +84,7 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ delay: 0.7, duration: 0.6 }}
       >
-        <TestimonialsSection />
+        <HerdNeedsSection />
       </motion.div>
 
       <motion.div
@@ -101,6 +104,8 @@ export default function Home() {
       >
         <NewsletterSection />
       </motion.div>
+
+      <GallerySection />
     </div>
   )
 }

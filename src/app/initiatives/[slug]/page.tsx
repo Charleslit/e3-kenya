@@ -18,18 +18,20 @@ export default function InitiativePage() {
   useEffect(() => {
     async function fetchInitiative() {
       try {
-        const response = await fetch(`/api/initiatives/${params.slug}`)
+        const response = await fetch(`/api/initiatives/${params?.slug}`)
         const data = await response.json()
         setInitiative(data)
       } catch (error) {
-        console.error('Failed to fetch initiative:', error)
+        console.error('Error fetching initiative:', error)
       } finally {
         setLoading(false)
       }
     }
 
-    fetchInitiative()
-  }, [params.slug])
+    if (params?.slug) {
+      fetchInitiative()
+    }
+  }, [params?.slug])
 
   if (loading) return <div>Loading...</div>
   if (!initiative) return <div>Initiative not found</div>

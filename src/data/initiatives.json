@@ -3,6 +3,25 @@
     {
       "id": "1",
       "title": "Osiligi Pad Project",
+      "description": "Providing reusable menstrual pads and sewing training to empower local communities.",
+      "imageUrl": "/images/backgrounds/mission-bg.jpg",
+      "impact": {
+        "beneficiaries": 2500,
+        "location": "Maasai Mara",
+        "duration": "Ongoing"
+      },
+      "status": "ongoing",
+      "partner": "MWEGO",
+      "highlights": [
+        "2,500 pads distributed",
+        "25 women trained",
+        "10 adolescent girls trained"
+      ]
+    },
+
+    {
+      "id": "1",
+      "title": "Osiligi Pad Project",
       "description": "Currently, we are working on an exciting initiative in partnership with MWEGO, a women's empowerment group in Maasai Mara, to produce reusable, eco-friendly menstrual pads in the United States and then distribute the pads to adolescent girls in Kenya.",
       "imageUrl": "/images/initiatives/osiligi.jpg",
       "impact": {

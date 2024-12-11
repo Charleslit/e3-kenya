@@ -5,8 +5,32 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Mail } from "lucide-react"
+import { useAsyncError } from "@/hooks/use-async-error"
+import { ErrorAlert } from "@/components/ui/error-alert"
 
 export function NewsletterSection() {
+  const { error, isLoading, withErrorHandling, clearError } = useAsyncError()
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    await withErrorHandling(async () => {
+      const formData = new FormData(e.currentTarget)
+      const email = formData.get("email")
+      
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      })
+
+      if (!response.ok) {
+        throw new Error("Failed to subscribe to newsletter")
+      }
+
+      // Handle success
+    })
+  }
+
   return (
     <section className="container py-24">
       <Card className="bg-primary-foreground">
@@ -32,14 +56,19 @@ export function NewsletterSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="flex flex-col justify-center"
           >
-            <form className="flex flex-col sm:flex-row gap-4">
+            {error && (
+              <ErrorAlert message={error.message} onDismiss={clearError} />
+            )}
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
               <Input
                 type="email"
+                name="email"
                 placeholder="Enter your email"
                 className="flex-1"
+                required
               />
-              <Button size="lg">
-                Subscribe
+              <Button size="lg" type="submit" disabled={isLoading}>
+                {isLoading ? "Subscribing..." : "Subscribe"}
               </Button>
             </form>
             <p className="mt-4 text-sm text-muted-foreground">

@@ -1,0 +1,16 @@
+{
+  "en": {
+    "common.welcome": "Welcome to our Sisterherd",
+    "common.vision": "Our Vision",
+    "common.mission": "Our Mission",
+    "common.donate": "Donate Now",
+    "vision.title": "A Kenya Where Every Woman and Girl Has the Opportunity to Make Her Own Decisions"
+  },
+  "sw": {
+    "common.welcome": "Karibu kwenye Sisterherd yetu",
+    "common.vision": "Maono Yetu",
+    "common.mission": "Dhamira Yetu",
+    "common.donate": "Changia Sasa",
+    "vision.title": "Kenya Ambapo Kila Mwanamke na Msichana Ana Nafasi ya Kufanya Maamuzi Yake Mwenyewe"
+  }
+} 

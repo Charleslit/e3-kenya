@@ -3,7 +3,6 @@ export interface Testimonial {
   name: string;
   role: string;
   content: string;
-  imageUrl?: string;
-  location?: string;
-  date: string;
+  image: string;
+  location: string;
 } 

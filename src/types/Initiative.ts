@@ -8,6 +8,7 @@ export type Initiative = {
     location: string;
     duration: string;
   };
-  status: "ongoing" | "planned" | "completed";
+  status: 'ongoing' | 'completed' | 'planned';
+  partner?: string;
   highlights?: string[];
-}; 
+} 
