@@ -2,37 +2,98 @@
   "boardMembers": [
     {
       "id": "1",
-      "name": "Jane Doe",
-      "role": "Executive Director",
-      "bio": "Jane has been leading E3 Kenya's initiatives for over 5 years, focusing on sustainable community development and women's empowerment.",
-      "imageUrl": "/images/board/jane-doe.jpg",
-      "socialLinks": {
-        "linkedin": "https://linkedin.com/in/jane-doe",
-        "email": "jane@e3kenya.org",
-        "twitter": "https://twitter.com/janedoe"
-      }
+      "name": "Salome Aluso",
+      "role": "Board Member",
+      "bio": "Salome holds a Bachelor's degree in Education (Arts) from the University of Nairobi, a Master's degree in Applied Linguistics from Ohio University, and is currently completing her PhD in Higher Education Administration & Student Affairs at Ohio University. As a former Fulbright scholarship recipient, she has taught Swahili at both the high school and college levels. Her expertise in curriculum design, grant writing, and student advocacy makes her an invaluable member of our board. Currently based in Kenya, she volunteers with community organizations focusing on youth and women empowerment.",
+      "imageUrl": "/images/board/placeholder.jpg",
+      "education": [
+        "PhD Candidate, Higher Education Administration & Student Affairs - Ohio University",
+        "MA, Applied Linguistics - Ohio University",
+        "BA, Education (Arts) - University of Nairobi"
+      ],
+      "achievements": [
+        "Fulbright Scholarship Recipient",
+        "Successful Grant Writer (Swahili STARTALK, Summer Bridge Program)",
+        "Former Assistant Director for Multicultural Student Affairs at Ohio Wesleyan University"
+      ]
     },
     {
       "id": "2",
-      "name": "John Smith",
-      "role": "Operations Director",
-      "bio": "With over 10 years of experience in NGO management, John oversees the day-to-day operations and project implementation.",
-      "imageUrl": "/images/board/john-smith.jpg",
-      "socialLinks": {
-        "linkedin": "https://linkedin.com/in/john-smith",
-        "email": "john@e3kenya.org"
-      }
+      "name": "Jennie Chen",
+      "role": "Board Member",
+      "bio": "Bridging data, psychology, and community empowerment, Jennie Chen has extensive expertise in social marketing, data analysis, data products, and community engagement. She excels in leveraging digital data to enhance content strategies, understand audience behavior, and build thriving community cultures. Her work with major brands and dedication to community advocacy through initiatives like Keep Austin Dog Friendly demonstrate her commitment to fostering positive change and meaningful connections.",
+      "imageUrl": "/images/board/placeholder.jpg",
+      "education": [
+        "PhD, Social Psychology - Texas A&M University",
+        "MA, Social Psychology - Texas A&M University",
+        "BA, Psychology - The University of Texas - Austin"
+      ],
+      "achievements": [
+        "Founded Keep Austin Dog Friendly",
+        "Led impactful events including Cupcake Smackdown and TEDxAustin experiences",
+        "Worked with major brands including Amazon, Walmart, Target, and The Home Depot",
+        "Active member of Austin Food Blogger Alliance"
+      ]
     },
     {
       "id": "3",
-      "name": "Sarah Johnson",
-      "role": "Community Relations",
-      "bio": "Sarah works directly with local communities to ensure our initiatives meet their needs and create lasting impact.",
-      "imageUrl": "/images/board/sarah-johnson.jpg",
-      "socialLinks": {
-        "email": "sarah@e3kenya.org",
-        "twitter": "https://twitter.com/sarahjohnson"
-      }
+      "name": "Susan Kavaya",
+      "role": "Board Member",
+      "bio": "Susan is pursuing a PhD in public health at Indiana University-Bloomington, specializing in Health Behavior and adolescent health. Her research focuses on adolescent sexual and reproductive health issues. Born and raised in Kenya, Susan has worked extensively with adolescents and young people as a teacher, peer educator, and researcher. Her experience spans high school and university levels, including teaching public health and Kiswahili.",
+      "imageUrl": "/images/board/placeholder.jpg",
+      "education": [
+        "PhD Candidate, Public Health - Indiana University-Bloomington",
+        "MS, School and College Health Education - Indiana University-Bloomington",
+        "MA, African Studies - Indiana University-Bloomington",
+        "BA, Education - University of Nairobi"
+      ],
+      "achievements": [
+        "Fulbright Foreign Language Teaching Assistant at Yale University (2013)",
+        "Expertise in adolescent sexual and reproductive health research",
+        "Experience teaching at both high school and university levels"
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Board Position Available",
+      "role": "Future Board Member",
+      "bio": "We are looking for passionate individuals who share our vision of empowering Kenyan women and girls.",
+      "imageUrl": "/images/board/placeholder.jpg"
+    },
+    {
+      "id": "5",
+      "name": "Board Position Available",
+      "role": "Future Board Member",
+      "bio": "We are looking for passionate individuals who share our vision of empowering Kenyan women and girls.",
+      "imageUrl": "/images/board/placeholder.jpg"
+    },
+    {
+      "id": "6",
+      "name": "Board Position Available",
+      "role": "Future Board Member",
+      "bio": "We are looking for passionate individuals who share our vision of empowering Kenyan women and girls.",
+      "imageUrl": "/images/board/placeholder.jpg"
+    },
+    {
+      "id": "7",
+      "name": "Board Position Available",
+      "role": "Future Board Member",
+      "bio": "We are looking for passionate individuals who share our vision of empowering Kenyan women and girls.",
+      "imageUrl": "/images/board/placeholder.jpg"
+    },
+    {
+      "id": "8",
+      "name": "Board Position Available",
+      "role": "Future Board Member",
+      "bio": "We are looking for passionate individuals who share our vision of empowering Kenyan women and girls.",
+      "imageUrl": "/images/board/placeholder.jpg"
+    },
+    {
+      "id": "9",
+      "name": "Board Position Available",
+      "role": "Future Board Member",
+      "bio": "We are looking for passionate individuals who share our vision of empowering Kenyan women and girls.",
+      "imageUrl": "/images/board/placeholder.jpg"
     }
   ]
-} 
+}

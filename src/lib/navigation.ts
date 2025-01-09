@@ -1,45 +1,29 @@
 export const mainNavItems = [
   {
-    title: "About",
-    href: "/about",
+    title: "Sisterherd Strong",
+    href: "/sisterherd",
   },
   {
-    title: "Initiatives",
+    title: "Herd Initiatives",
     href: "/initiatives",
     subItems: [
       {
         title: "Osiligi Pad Project",
         href: "/initiatives/osiligi-pad-project",
       },
-      {
-        title: "Western Kenya",
-        href: "/initiatives/western-kenya",
-      },
-      {
-        title: "Nairobi Outreach",
-        href: "/initiatives/nairobi-outreach",
-      },
     ],
   },
   {
     title: "Meet the Herd",
-    href: "/board",
+    href: "/herd",
+  },
+  {
+    title: "Help Us Make Tracks",
+    href: "/tracks",
   },
   {
     title: "Herd Chronicles",
     href: "/chronicles",
-  },
-  {
-    title: "Our Impact",
-    href: "/impact",
-  },
-  {
-    title: "Contact",
-    href: "/contact",
-  },
-  {
-    title: "Gallery",
-    href: "/gallery",
   },
 ] as const
 
@@ -83,4 +67,4 @@ export const socialLinks = [
     href: "https://linkedin.com/company/e3kenya",
     icon: "linkedin",
   },
-] as const 
+] as const

@@ -1,0 +1,44 @@
+{
+  "stories": [
+    {
+      "id": "1",
+      "name": "Faith Wanjiku",
+      "role": "Student",
+      "location": "Nakuru County",
+      "story": "Before E3 Kenya came to our school, I used to miss classes during my period. Now, with their reusable pad kits and education program, I haven't missed a single day. I'm at the top of my class and dreaming of becoming a doctor.",
+      "imageUrl": "/images/stories/faith.jpg",
+      "impact": "Academic attendance improved by 95%",
+      "quote": "Now I can focus on my dreams instead of worrying about basic needs."
+    },
+    {
+      "id": "2",
+      "name": "Mary Akinyi",
+      "role": "Community Leader",
+      "location": "Kisumu County",
+      "story": "Our women's sewing circle doesn't just make pads - we've become a sisterhood. Through E3 Kenya's training, we've learned business skills, and now we're teaching other women in neighboring villages. It's creating a ripple effect of empowerment.",
+      "imageUrl": "/images/stories/mary.jpg",
+      "impact": "Trained 30 women in pad-making and business skills",
+      "quote": "We're not just making products, we're weaving a stronger community."
+    },
+    {
+      "id": "3",
+      "name": "Sarah Mutua",
+      "role": "Teacher",
+      "location": "Machakos County",
+      "story": "The change in my students is remarkable. Girls who were once shy and frequently absent are now confident and regular attendees. E3 Kenya's workshops have given us the tools to talk openly about menstrual health and break down stigma.",
+      "imageUrl": "/images/stories/sarah.jpg",
+      "impact": "Reduced girl student dropout rate by 60%",
+      "quote": "Education is about more than books - it's about dignity and confidence."
+    },
+    {
+      "id": "4",
+      "name": "Grace Mwangi",
+      "role": "Workshop Graduate",
+      "location": "Kiambu County",
+      "story": "After completing E3 Kenya's entrepreneurship program, I started my own small business selling reusable pads. Now I employ five other women, and we're able to support our families while helping our community.",
+      "imageUrl": "/images/stories/grace.jpg",
+      "impact": "Created sustainable income for 6 families",
+      "quote": "E3 Kenya didn't just give us skills - they gave us hope and independence."
+    }
+  ]
+}

@@ -6,93 +6,111 @@ import { BoardMember } from "@/types/BoardMember"
 import { Card, CardContent } from "@/components/ui/card"
 import { Modal } from "@/components/ui/modal"
 import Image from "next/image"
+import { LogoButton } from "@/components/ui/logo-button"
+import Link from "next/link"
+import { cn } from "@/lib/utils"
+import boardMembersData from "@/data/board-members.json"
 
-interface BoardMembersProps {
-  members: BoardMember[]
-}
+const boardMembers = boardMembersData.boardMembers as BoardMember[]
 
 function MemberCard({ member }: { member: BoardMember }) {
   const [isOpen, setIsOpen] = useState(false)
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
 
-  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
-    const { left, top } = currentTarget.getBoundingClientRect()
-    mouseX.set(clientX - left)
-    mouseY.set(clientY - top)
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    mouseX.set(x)
+    mouseY.set(y)
   }
-
-  const background = useMotionTemplate`
-    radial-gradient(
-      650px circle at ${mouseX}px ${mouseY}px,
-      rgba(var(--primary-rgb), 0.15),
-      transparent 80%
-    )
-  `
 
   return (
     <>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+      <Card
+        className="group relative overflow-hidden rounded-2xl border-none bg-gradient-to-b from-primary/5 to-secondary/5"
+        onMouseMove={handleMouseMove}
       >
-        <Card
-          className="group relative overflow-hidden cursor-pointer"
-          onClick={() => setIsOpen(true)}
-          onMouseMove={handleMouseMove}
-        >
-          <motion.div
-            className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
-            style={{ background }}
-          />
-          <CardContent className="p-6">
-            <div className="relative h-64 mb-4 overflow-hidden rounded-lg">
-              <Image
-                src={member.imageUrl}
-                alt={member.name}
-                fill
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-            </div>
-            <h3 className="text-lg font-semibold">{member.name}</h3>
-            <p className="text-sm text-muted-foreground">{member.role}</p>
-          </CardContent>
-        </Card>
-      </motion.div>
-
-      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="relative h-[300px] md:h-[400px]">
+        <CardContent className="p-0">
+          <div className="relative aspect-[3/4] overflow-hidden">
             <Image
               src={member.imageUrl}
               alt={member.name}
               fill
-              className="object-cover rounded-lg"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
-          </div>
-          <div>
-            <h2 className="text-2xl font-bold mb-2">{member.name}</h2>
-            <p className="text-primary font-medium mb-4">{member.role}</p>
-            <div className="prose prose-sm">
-              <p className="mb-4">{member.bio}</p>
-              {member.expertise && (
-                <>
-                  <h3 className="text-lg font-semibold mb-2">Areas of Expertise</h3>
-                  <ul>
-                    {member.expertise.map((item, index) => (
-                      <li key={index}>{item}</li>
-                    ))}
-                  </ul>
-                </>
-              )}
-              {member.quote && (
-                <blockquote className="border-l-4 border-primary pl-4 italic mt-4">
-                  {member.quote}
-                </blockquote>
-              )}
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+            
+            <div className="absolute bottom-0 left-0 right-0 p-6">
+              <div className="space-y-2">
+                <h3 className="font-serif text-2xl font-bold text-white">{member.name}</h3>
+                <p className="text-primary">{member.role}</p>
+              </div>
+              
+              <div className="mt-4 space-y-3">
+                <p className="line-clamp-3 text-sm text-white/90">
+                  {member.bio}
+                </p>
+                <div className="pt-2">
+                  <LogoButton 
+                    variant="outline" 
+                    size="sm" 
+                    className="w-full"
+                    onClick={() => setIsOpen(true)}
+                  >
+                    Read {member.name}'s Story
+                  </LogoButton>
+                </div>
+              </div>
             </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        className="max-w-2xl"
+      >
+        <div className="relative aspect-[16/9] overflow-hidden rounded-t-lg">
+          <Image
+            src={member.imageUrl}
+            alt={member.name}
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+        </div>
+
+        <div className="p-6">
+          <h3 className="font-serif text-2xl font-bold">{member.name}</h3>
+          <p className="text-primary">{member.role}</p>
+
+          <div className="mt-6 space-y-4">
+            <p className="text-muted-foreground">{member.bio}</p>
+
+            {member.education && (
+              <div>
+                <h4 className="font-bold">Education</h4>
+                <ul className="mt-2 list-inside list-disc space-y-1 text-sm text-muted-foreground">
+                  {member.education.map((edu, index) => (
+                    <li key={index}>{edu}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {member.achievements && (
+              <div>
+                <h4 className="font-bold">Achievements</h4>
+                <ul className="mt-2 list-inside list-disc space-y-1 text-sm text-muted-foreground">
+                  {member.achievements.map((achievement, index) => (
+                    <li key={index}>{achievement}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </Modal>
@@ -100,28 +118,61 @@ function MemberCard({ member }: { member: BoardMember }) {
   )
 }
 
-export function BoardMembers({ members }: BoardMembersProps) {
+export function BoardMembersSection() {
   return (
-    <section className="container py-24">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="text-center mb-16"
-      >
-        <h2 className="heading-2 mb-4">Meet the Herd</h2>
-        <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-          Our diverse and dedicated Board of Directors brings expertise from education,
-          public health, business, and philanthropy to strengthen our impact.
-        </p>
-      </motion.div>
+    <section className="relative overflow-hidden bg-muted/20 py-24">
+      <div className="absolute inset-0 bg-[url('/images/pattern-warm.png')] opacity-5" />
+      
+      <div className="container relative">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mx-auto max-w-3xl text-center"
+        >
+          <h2 className="font-serif text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+            Meet Our Herd Leaders
+          </h2>
+          <p className="mt-4 text-xl text-muted-foreground">
+            Our board members aren't just leaders – they're storytellers, dreamers, and 
+            champions of change. Each brings their unique journey to our shared mission.
+          </p>
+        </motion.div>
 
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {members.map((member) => (
-          <MemberCard key={member.id} member={member} />
-        ))}
+        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {boardMembers.map((member, index) => (
+            <motion.div
+              key={member.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <MemberCard member={member} />
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="mt-16 rounded-3xl border border-border bg-card p-8 text-center"
+        >
+          <h3 className="font-serif text-2xl font-bold">Join Our Herd</h3>
+          <p className="mt-4 text-lg text-muted-foreground">
+            We're always looking for passionate individuals to join our mission. 
+            Whether you're in Kenya or across the globe, your story could be part 
+            of our journey.
+          </p>
+          <div className="mt-6">
+            <Link href="/join-us">
+              <LogoButton size="lg">
+                Learn About Joining Our Board
+              </LogoButton>
+            </Link>
+          </div>
+        </motion.div>
       </div>
     </section>
   )
-} 
+}

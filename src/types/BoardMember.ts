@@ -1,4 +1,6 @@
 export interface BoardMember {
+  education: any;
+  achievements: any;
   id: string;
   name: string;
   role: string;

@@ -1,24 +1,22 @@
 export const routes = {
   home: "/",
-  about: "/about",
+  sisterherd: "/sisterherd",
   initiatives: {
     index: "/initiatives",
     osiligi: "/initiatives/osiligi-pad-project",
-    western: "/initiatives/western-kenya",
-    nairobi: "/initiatives/nairobi-outreach",
   },
-  board: "/board",
-  impact: "/impact",
-  contact: "/contact",
+  herd: "/herd",
+  tracks: "/tracks",
+  chronicles: "/chronicles",
   donate: "/donate",
 } as const
 
 export const footerNavItems = [
-  { href: routes.about, title: "About Us" },
-  { href: routes.initiatives.index, title: "Initiatives" },
-  { href: routes.board, title: "Meet the Herd" },
-  { href: routes.impact, title: "Impact" },
-  { href: routes.contact, title: "Contact" },
+  { href: routes.sisterherd, title: "Sisterherd Strong" },
+  { href: routes.initiatives.index, title: "Herd Initiatives" },
+  { href: routes.herd, title: "Meet the Herd" },
+  { href: routes.tracks, title: "Help Us Make Tracks" },
+  { href: routes.chronicles, title: "Herd Chronicles" },
 ] as const
 
 export type Route = typeof routes[keyof typeof routes] 

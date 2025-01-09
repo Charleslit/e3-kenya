@@ -72,10 +72,17 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "sound-wave": {
+          "0%, 100%": { height: "12px" },
+          "50%": { height: "48px" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "sound-wave-1": "sound-wave 1s ease-in-out infinite",
+        "sound-wave-2": "sound-wave 1s ease-in-out 0.1s infinite",
+        "sound-wave-3": "sound-wave 1s ease-in-out 0.2s infinite",
       },
     },
   },

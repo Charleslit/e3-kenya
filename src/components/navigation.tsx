@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { ModeToggle } from "@/components/mode-toggle"
+import { LogoButton } from "@/components/ui/logo-button"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import Image from "next/image"
@@ -70,21 +71,16 @@ export function Navigation() {
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
-            <Button asChild>
-              <Link href={routes.donate}>
-                <div className="flex items-center gap-2">
-                  <div className="relative h-4 w-4">
-                    <Image
-                      src="/images/logo/0.jpg"
-                      alt=""
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                  Donate Now
-                </div>
-              </Link>
-            </Button>
+            {/* <Link href={routes.donate}>
+              <LogoButton size="sm">
+                Donate Now
+              </LogoButton>
+            </Link> */}
+            <Link href="/donate">
+            <LogoButton variant="link">
+              Donate now
+            </LogoButton>
+          </Link>
             <ModeToggle />
           </div>
 
@@ -93,4 +89,4 @@ export function Navigation() {
       </div>
     </header>
   )
-} 
+}

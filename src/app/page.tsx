@@ -3,32 +3,28 @@
 import { motion } from 'framer-motion'
 import { HeroSection } from '@/components/sections/hero'
 import { MissionSection } from '@/components/sections/mission'
-import { ImpactStats } from '@/components/sections/impact-stats'
 import { InitiativesShowcase } from '@/components/sections/initiatives-showcase'
-import { BoardMembers } from '@/components/sections/board-members'
-import { TestimonialsSection } from '@/components/sections/testimonials'
-import { PartnersSection } from '@/components/sections/partners'
-import { NewsletterSection } from '@/components/sections/newsletter'
+import { BoardMembersSection } from '@/components/sections/board-members'
 import { HerdNeedsSection } from '@/components/sections/herd-needs'
-import { GallerySection } from '@/components/sections/gallery'
+import { DonationSection } from '@/components/sections/donation'
+import { HerdChronicles } from '@/components/sections/herd-chronicles'
 
-// Import data with type assertions to ensure correct types
+// Import data
 import initiativesJson from '@/data/initiatives.json'
-import boardMembersJson from '@/data/board-members.json'
 import { Initiative } from '@/types/Initiative'
-import { BoardMember } from '@/types/BoardMember'
+import { Metadata } from 'next'
 
 const initiatives = initiativesJson.initiatives as Initiative[]
-const boardMembers = boardMembersJson.boardMembers as BoardMember[]
+
 
 
 export default function Home() {
-  return (
-    <div className="flex min-h-screen flex-col">
+  return (  
+    <main className="flex min-h-screen flex-col">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.6 }}
       >
         <HeroSection />
       </motion.div>
@@ -48,7 +44,7 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ delay: 0.3, duration: 0.6 }}
       >
-        <ImpactStats />
+        <InitiativesShowcase initiatives={initiatives} />
       </motion.div>
 
       <motion.div
@@ -57,7 +53,7 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ delay: 0.4, duration: 0.6 }}
       >
-        <InitiativesShowcase initiatives={initiatives} />
+        <BoardMembersSection />
       </motion.div>
 
       <motion.div
@@ -66,7 +62,7 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ delay: 0.5, duration: 0.6 }}
       >
-        <BoardMembers members={boardMembers} />
+        <HerdNeedsSection />
       </motion.div>
 
       <motion.div
@@ -75,7 +71,7 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ delay: 0.6, duration: 0.6 }}
       >
-        <TestimonialsSection />
+        <HerdChronicles />
       </motion.div>
 
       <motion.div
@@ -84,28 +80,8 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ delay: 0.7, duration: 0.6 }}
       >
-        <HerdNeedsSection />
+        <DonationSection />
       </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.8, duration: 0.6 }}
-      >
-        <PartnersSection />
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.9, duration: 0.6 }}
-      >
-        <NewsletterSection />
-      </motion.div>
-
-      <GallerySection />
-    </div>
+    </main>
   )
 }
