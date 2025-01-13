@@ -67,8 +67,8 @@ export function DonationForm() {
   return (
     <div className="space-y-8">
       <DonationTiers
-        selectedTier={selectedTier}
-        onSelect={handleTierSelect}
+        selectedTierId={selectedTier?.id ?? ''}
+        onSelectTier={handleTierSelect}
       />
 
       <Card>

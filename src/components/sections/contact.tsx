@@ -2,12 +2,27 @@
 
 import { motion } from "framer-motion"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { LogoButton } from "@/components/shared/logobutton"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Mail, Phone, MapPin } from "lucide-react"
+import { Button } from "../ui/button"
+import { useForm } from "react-hook-form"
+
+interface ContactFormData {
+  name: string
+  email: string
+  message: string
+}
 
 export function ContactSection() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset
+  } = useForm<ContactFormData>()
+
   return (
     <section className="container py-24">
       <div className="grid gap-12 lg:grid-cols-2">
@@ -84,7 +99,17 @@ export function ContactSection() {
                 <div className="space-y-2">
                   <Textarea placeholder="Your message" className="min-h-[150px]" />
                 </div>
-                <Button className="w-full">Send Message</Button>
+                <LogoButton
+                  type="submit"
+                  variant="default"
+                  textStyle="shadow"
+                  focusStyle="glow"
+                  isLoading={isSubmitting}
+                  loadingText="Sending..."
+                  className="w-full"
+                >
+                  Send Message
+                </LogoButton>
               </form>
             </CardContent>
           </Card>

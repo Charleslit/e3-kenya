@@ -1,25 +1,11 @@
 export const mainNavItems = [
   {
-    title: "About",
-    href: "/about",
+    title: "Sisterherd Strong",
+    href: "/",
   },
   {
-    title: "Initiatives",
+    title: "Herd Initiatives",
     href: "/initiatives",
-    subItems: [
-      {
-        title: "Osiligi Pad Project",
-        href: "/initiatives/osiligi-pad-project",
-      },
-      {
-        title: "Western Kenya",
-        href: "/initiatives/western-kenya",
-      },
-      {
-        title: "Nairobi Outreach",
-        href: "/initiatives/nairobi-outreach",
-      },
-    ],
   },
   {
     title: "Meet the Herd",
@@ -30,16 +16,8 @@ export const mainNavItems = [
     href: "/chronicles",
   },
   {
-    title: "Our Impact",
-    href: "/impact",
-  },
-  {
-    title: "Contact",
-    href: "/contact",
-  },
-  {
-    title: "Gallery",
-    href: "/gallery",
+    title: "Sustain the Herd",
+    href: "/donate",
   },
 ] as const
 

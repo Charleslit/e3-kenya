@@ -1,58 +1,36 @@
 "use client"
 
-import { motion, HTMLMotionProps } from "framer-motion"
-import { cn } from "@/lib/utils"
+import { motion } from 'framer-motion'
+import { theme } from '@/lib/theme'
+import { cn } from '@/lib/utils'
 
-type BaseWrapperProps = {
-  children: React.ReactNode
-  container?: boolean
-  animate?: boolean
-  pattern?: "herd" | "elephant" | "none"
+const sectionVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  }
 }
 
-type MotionWrapperProps = BaseWrapperProps & HTMLMotionProps<"div">
-type StaticWrapperProps = BaseWrapperProps & React.HTMLAttributes<HTMLDivElement>
+interface SectionWrapperProps {
+  children: React.ReactNode
+  delay?: number
+  className?: string
+}
 
-type WrapperProps = MotionWrapperProps | StaticWrapperProps
-
-export function Wrapper({ 
-  children, 
-  container = true, 
-  animate = true,
-  pattern = "none",
-  className,
-  ...props 
-}: WrapperProps) {
-  const commonClasses = cn(
-    "relative",
-    container && "container py-24",
-    pattern === "herd" && "bg-[url('/patterns/herd.svg')] bg-repeat-x bg-bottom",
-    pattern === "elephant" && "bg-[url('/patterns/elephant.svg')] bg-no-repeat bg-right-bottom",
-    className
-  )
-
-  if (!animate) {
-    // Type assertion to handle static props
-    const staticProps = props as React.HTMLAttributes<HTMLDivElement>
-    return (
-      <div
-        className={commonClasses}
-        {...staticProps}
-      >
-        {children}
-      </div>
-    )
-  }
-  
-  // Type assertion to handle motion props
-  const motionProps = props as HTMLMotionProps<"div">
+export function SectionWrapper({ children, delay = 0, className }: SectionWrapperProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={commonClasses}
-      {...motionProps}
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ delay }}
+      className={cn("w-full", className)}
     >
       {children}
     </motion.div>

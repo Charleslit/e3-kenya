@@ -7,37 +7,26 @@ import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Newspaper } from 'lucide-react'
 import Image from 'next/image'
-import { getImages } from '@/lib/images'
 
 function StoriesSection() {
-  const storyImages = getImages({
-    category: 'testimonials',
-    count: 3,
-    tags: ['community', 'training'],
-    shuffle: true
-  })
-
   const stories = [
     {
       title: "The Birth of Osiligi Pad Project",
       date: "December 2024",
       excerpt: "How a community-inspired initiative is changing lives in Maasai Mara",
-      image: storyImages[0].path,
-      description: storyImages[0].description
+      image: "/images/logo/0.jpg"
     },
     {
       title: "Training Sessions: A Journey of Empowerment",
       date: "October 2024",
       excerpt: "25 women and 10 adolescent girls learn valuable skills in pad-making",
-      image: storyImages[1].path,
-      description: storyImages[1].description
+      image: "/images/logo/0.jpg"
     },
     {
       title: "Expanding Our Reach",
       date: "January 2025",
       excerpt: "From Maasai Mara to Nairobi: The growing impact of our initiatives",
-      image: storyImages[2].path,
-      description: storyImages[2].description
+      image: "/images/logo/0.jpg"
     }
   ]
 
@@ -54,7 +43,7 @@ function StoriesSection() {
             <div className="relative h-48">
               <Image
                 src={story.image}
-                alt={story.description || story.title}
+                alt={story.title}
                 fill
                 className="object-cover"
               />

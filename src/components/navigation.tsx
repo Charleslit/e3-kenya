@@ -9,6 +9,7 @@ import Image from "next/image"
 import { MobileNav } from "./navigation/mobile-nav"
 import { routes } from "@/lib/routes"
 import { mainNavItems } from "@/lib/navigation"
+import { LogoButton } from "@/components/shared/logobutton"
 
 export function Navigation() {
   const pathname = usePathname()
@@ -21,19 +22,18 @@ export function Navigation() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Link href={routes.home} className="flex items-center space-x-2">
-            <div className="relative h-10 w-10">
-              <Image
-                src="/images/logo/0.jpg"
-                alt="E3 Kenya Logo"
-                fill
-                className="object-contain"
-              />
-            </div>
-            {/* <div className="flex flex-col">
-              <span className="text-xs text-muted-foreground">Sisterherd Strong</span>
-            </div> */}
-          </Link>
+          <div className="hidden md:flex md:items-center md:gap-4">
+            <LogoButton
+              href={routes.donate}
+              variant="default"
+              size="sm"
+              textStyle="glow"
+              focusStyle="glow"
+              darkOverlay
+            >
+              Donate Now
+            </LogoButton>
+          </div>
         </motion.div>
 
         <motion.div
@@ -70,21 +70,6 @@ export function Navigation() {
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
-            <Button asChild>
-              <Link href={routes.donate}>
-                <div className="flex items-center gap-2">
-                  <div className="relative h-4 w-4">
-                    <Image
-                      src="/images/logo/0.jpg"
-                      alt=""
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                  Donate Now
-                </div>
-              </Link>
-            </Button>
             <ModeToggle />
           </div>
 
@@ -93,4 +78,4 @@ export function Navigation() {
       </div>
     </header>
   )
-} 
+}
