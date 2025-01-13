@@ -9,7 +9,7 @@ import { LogoButton } from '@/components/shared/logobutton'
 import { ChevronDown } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 
-export default function SisterherdStrongSection() {
+export default function SisterherdStrongSection1() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-background/5">
       {/* Hero Section */}

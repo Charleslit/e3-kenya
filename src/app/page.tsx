@@ -24,7 +24,6 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
       <SectionWrapper>
-        {/* <SisterherdStrongSection /> */}
         <SisterherdStrongSection1/>
       </SectionWrapper>
       <SectionWrapper>
