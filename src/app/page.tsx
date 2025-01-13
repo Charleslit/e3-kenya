@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { HeroSection } from '@/components/sections/hero'
+import PremiumHeroSection from '@/components/sections/hero'
 import HerdInitiatives from '@/components/sections/initiatives-showcase'
 import { BoardMembers } from '@/components/sections/board-members'
 import initiativesJson from '@/data/initiatives.json'
@@ -24,7 +24,9 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
       <SectionWrapper>
-        {/* <SisterherdStrongSection /> */}
+        <PremiumHeroSection/>
+      </SectionWrapper>
+      <SectionWrapper>
         <SisterherdStrongSection1/>
       </SectionWrapper>
       <SectionWrapper>
