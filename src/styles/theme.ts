@@ -1,42 +1,41 @@
 export const theme = {
   colors: {
-    // Warm and friendly colors based on African sunset/nature theme
+    // Brand colors based on the Sisterherd Strong theme
     primary: {
-      50: '#FFF5E6',
-      100: '#FFE4BF',
-      200: '#FFD199',
-      300: '#FFBE72',
-      400: '#FFAB4C',
-      500: '#FF9826', // Primary brand color
-      600: '#FF8500',
-      700: '#CC6A00',
-      800: '#995000',
-      900: '#663500',
+      50: '#FFE5E5',
+      100: '#FFCCCC',
+      200: '#FF9999',
+      300: '#FF6666',
+      400: '#FF3333',
+      500: '#DC143C', // Crimson red - primary brand color
+      600: '#B30000',
+      700: '#800000',
+      800: '#4D0000',
+      900: '#1A0000',
     },
     secondary: {
-      50: '#F5F9FF',
-      100: '#E5F0FF',
-      200: '#C7E0FF',
-      300: '#94C1FF',
-      400: '#5A9CFF',
-      500: '#2673FF', // Secondary brand color
-      600: '#0052FF',
-      700: '#003ECC',
-      800: '#002B8F',
-      900: '#001A52',
+      50: '#E6FFE6',
+      100: '#CCFFCC',
+      200: '#99FF99',
+      300: '#66FF66',
+      400: '#33FF33',
+      500: '#228B22', // Forest green - secondary brand color
+      600: '#006600',
+      700: '#004D00',
+      800: '#003300',
+      900: '#001A00',
     },
     accent: {
-      // Earthy tones for environmental aspect
-      green: '#2D5A27',
-      sage: '#8BA888',
-      terra: '#CB8E6E',
-      clay: '#B4654A',
+      // Elephant-inspired colors
+      beige: '#F5F5DC', // Beige accent
+      gray: '#808080', // Elephant gray
+      black: '#000000', // Pure black for contrast
     },
     neutral: {
-      50: '#F9F9F9',
-      100: '#F0F0F0',
-      200: '#E4E4E4',
-      300: '#D1D1D1',
+      50: '#FFFFFF',
+      100: '#F5F5F5',
+      200: '#E5E5E5',
+      300: '#D4D4D4',
       400: '#A3A3A3',
       500: '#737373',
       600: '#525252',
@@ -44,10 +43,10 @@ export const theme = {
       800: '#262626',
       900: '#171717',
     },
-    success: '#2D5A27',
-    warning: '#FF9826',
-    error: '#B4654A',
-    info: '#2673FF',
+    success: '#228B22', // Forest green
+    warning: '#DC143C', // Crimson
+    error: '#DC143C',   // Crimson
+    info: '#808080',    // Elephant gray
   },
   spacing: {
     xs: '0.25rem',
@@ -71,25 +70,22 @@ export const theme = {
   },
   typography: {
     heading: {
-      fontFamily: 'var(--font-heading)',
-      h1: { fontSize: '3rem', lineHeight: '1.2' },
-      h2: { fontSize: '2.25rem', lineHeight: '1.3' },
-      h3: { fontSize: '1.875rem', lineHeight: '1.4' },
-      h4: { fontSize: '1.5rem', lineHeight: '1.4' },
-      h5: { fontSize: '1.25rem', lineHeight: '1.4' },
-      h6: { fontSize: '1rem', lineHeight: '1.4' },
+      fontFamily: 'var(--font-crimson)', // Crimson Text for headings
+      h1: { fontSize: '3.5rem', lineHeight: '1.2', fontWeight: '700' },
+      h2: { fontSize: '2.5rem', lineHeight: '1.3', fontWeight: '700' },
+      h3: { fontSize: '2rem', lineHeight: '1.4', fontWeight: '600' },
+      h4: { fontSize: '1.5rem', lineHeight: '1.4', fontWeight: '600' },
+      h5: { fontSize: '1.25rem', lineHeight: '1.4', fontWeight: '600' },
+      h6: { fontSize: '1rem', lineHeight: '1.4', fontWeight: '600' },
     },
     body: {
-      fontFamily: 'var(--font-body)',
-      small: { fontSize: '0.875rem', lineHeight: '1.5' },
-      base: { fontSize: '1rem', lineHeight: '1.6' },
-      large: { fontSize: '1.125rem', lineHeight: '1.6' },
-    },
-    serif: {
-      fontFamily: 'var(--font-serif)',
+      fontFamily: 'var(--font-raleway)', // Raleway for body text
+      small: { fontSize: '0.875rem', lineHeight: '1.6' },
+      base: { fontSize: '1.125rem', lineHeight: '1.7' },
+      large: { fontSize: '1.25rem', lineHeight: '1.7' },
     },
     accent: {
-      fontFamily: 'var(--font-accent)',
+      fontFamily: 'var(--font-montserrat)', // Montserrat for accents and buttons
     },
   },
 }

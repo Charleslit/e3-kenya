@@ -2,37 +2,84 @@
   "boardMembers": [
     {
       "id": "1",
-      "name": "Jane Doe",
-      "role": "Executive Director",
-      "bio": "Jane has been leading E3 Kenya's initiatives for over 5 years, focusing on sustainable community development and women's empowerment.",
-      "imageUrl": "/images/board/jane-doe.jpg",
-      "socialLinks": {
-        "linkedin": "https://linkedin.com/in/jane-doe",
-        "email": "jane@e3kenya.org",
-        "twitter": "https://twitter.com/janedoe"
-      }
+      "name": "Salome Aluso",
+      "role": "Education & Curriculum Development",
+      "bio": "Salome holds a Bachelor's degree in Education (Arts) from the University of Nairobi, a Master's degree in Applied Linguistics from Ohio University, and is currently completing her PhD in Higher Education Administration & Student Affairs at Ohio University. As a former Fulbright scholarship recipient, she has taught Swahili at both the high school and college levels, and has gained significant experience in curriculum design, classroom teaching, and management.",
+      "imageUrl": "/images/board/salome-aluso.jpg",
+      "expertise": [
+        "Higher Education Administration",
+        "Curriculum Design",
+        "Grant Writing",
+        "Student Affairs"
+      ],
+      "location": "Kenya"
     },
     {
       "id": "2",
-      "name": "John Smith",
-      "role": "Operations Director",
-      "bio": "With over 10 years of experience in NGO management, John oversees the day-to-day operations and project implementation.",
-      "imageUrl": "/images/board/john-smith.jpg",
-      "socialLinks": {
-        "linkedin": "https://linkedin.com/in/john-smith",
-        "email": "john@e3kenya.org"
-      }
+      "name": "Jennie Chen",
+      "role": "Data Analytics & Community Engagement",
+      "bio": "Bridging data, psychology, and community empowerment, Jennie Chen has extensive expertise in social marketing, data analysis, data products, and community engagement. She holds a Doctorate and Masters in Social Psychology from Texas A&M University and a Bachelor's in Psychology from The University of Texas - Austin.",
+      "imageUrl": "/images/board/jennie-chen.jpg",
+      "expertise": [
+        "Social Marketing",
+        "Data Analysis",
+        "Community Engagement",
+        "Digital Strategy"
+      ]
     },
     {
       "id": "3",
-      "name": "Sarah Johnson",
-      "role": "Community Relations",
-      "bio": "Sarah works directly with local communities to ensure our initiatives meet their needs and create lasting impact.",
-      "imageUrl": "/images/board/sarah-johnson.jpg",
-      "socialLinks": {
-        "email": "sarah@e3kenya.org",
-        "twitter": "https://twitter.com/sarahjohnson"
-      }
+      "name": "Susan Kavaya",
+      "role": "Public Health & Research",
+      "bio": "Currently pursuing a PHD in public health at Indiana University-Bloomington, Susan specializes in Health Behavior and adolescent health. Her research focuses on adolescent sexual and reproductive health issues such as teen pregnancy prevention, contraceptive use, HIV and other STIs.",
+      "imageUrl": "/images/board/susan-kavaya.jpg",
+      "expertise": [
+        "Public Health",
+        "Adolescent Health",
+        "Research",
+        "Education"
+      ],
+      "location": "Kenya/USA"
+    },
+    {
+      "id": "4",
+      "name": "Rhinah Ondiso",
+      "role": "Business Analysis & Project Management",
+      "bio": "Born and raised in Kenya's Vihiga County, Rhinah overcame educational challenges through scholarship support. She holds an MBA from Lynn University and a Master of Science in Project Management from Harrisburg University of Science and Technology.",
+      "imageUrl": "/images/board/rhinah-ondiso.jpg",
+      "expertise": [
+        "Business Analysis",
+        "Project Management",
+        "Software Development",
+        "Business Administration"
+      ],
+      "location": "USA"
+    },
+    {
+      "id": "5",
+      "name": "Vicki Seiler-Cushman",
+      "role": "Marketing & Communications",
+      "bio": "With expertise in marketing and communications, Vicki is currently an entrepreneur for a small family-owned business, serving as Vice President of JV Cedar Properties and co-owner of Glazed Donut Eatery Beavercreek.",
+      "imageUrl": "/images/board/vicki-seiler.jpg",
+      "expertise": [
+        "Marketing Strategy",
+        "Business Operations",
+        "Communications",
+        "Entrepreneurship"
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Jacquie Smith",
+      "role": "Engineering & Leadership",
+      "bio": "A graduate of Purdue University with a B.S. in Mechanical Engineering and an MBA from the University of Pittsburgh, Jacquie has spent her career in the electric utility industry. She's also a long-time advocate for individuals with developmental disabilities.",
+      "imageUrl": "/images/board/jacquie-smith.jpg",
+      "expertise": [
+        "Engineering",
+        "Business Administration",
+        "Leadership",
+        "Advocacy"
+      ]
     }
   ]
-} 
+}

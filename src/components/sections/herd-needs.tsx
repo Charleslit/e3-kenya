@@ -1,105 +1,135 @@
-"use client"
+'use client'
 
-import { motion } from "framer-motion"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
-import { Heart, Users, HandHeart } from "lucide-react"
+import { Section } from '@/components/ui/section'
+import { motion } from 'framer-motion'
+import { theme } from '@/lib/theme'
+import { cn } from '@/lib/utils'
+import { Card, CardContent } from '@/components/ui/card'
+import { LogoButton } from '@/components/shared/logobutton'
+import { Heart, Footprints, Droplets, Trees, Crown, HandHeart } from 'lucide-react'
 
-const opportunities = [
+const donationTiers = [
   {
-    title: "Make a Donation",
-    description: "Support our initiatives through financial contributions. Every donation helps us expand our impact.",
-    icon: Heart,
-    action: {
-      text: "Donate Now",
-      href: "/donate"
-    }
-  },
-  {
-    title: "Volunteer with Us",
-    description: "Share your skills and time. Join us in making a difference in the lives of Kenyan women and girls.",
-    icon: Users,
-    action: {
-      text: "Join Our Team",
-      href: "/volunteer"
-    }
-  },
-  {
-    title: "Partner with Us",
-    description: "Collaborate with us to create sustainable change. Together we can achieve more.",
+    title: "Herd Hands",
     icon: HandHeart,
-    action: {
-      text: "Become a Partner",
-      href: "/contact"
-    }
+    description: "Reflecting the way elephants lift and support each other with their trunks, these are the volunteers who amplify the Sisterherd mission through their selfless actions.",
+    color: "text-amber-500",
+    bgColor: "bg-amber-500/10",
+  },
+  {
+    title: "Tiny Tusks",
+    amount: "$10 - $99",
+    icon: Heart,
+    description: "Symbolizing young elephants, just beginning their journey. Your donation buys fabric, thread, and supplies for pads. $15 supports one 4-pad package.",
+    color: "text-rose-500",
+    bgColor: "bg-rose-500/10",
+  },
+  {
+    title: "Footprint Friends",
+    amount: "$100 - $999",
+    icon: Footprints,
+    description: "Representing deep footprints that elephants make. Contributes towards purchasing sewing machines ($250-$500 per machine including transportation).",
+    color: "text-emerald-500",
+    bgColor: "bg-emerald-500/10",
+  },
+  {
+    title: "Watering Hole Allies",
+    amount: "$1,000 - $4,999",
+    icon: Droplets,
+    description: "Supporting multiple-day training sessions with at least 2 sewing machines on site, fostering community and shared purpose.",
+    color: "text-blue-500",
+    bgColor: "bg-blue-500/10",
+  },
+  {
+    title: "Savanna Stewards",
+    amount: "$5,000 - $9,999",
+    icon: Trees,
+    description: "Enabling training sessions at multiple locations with at least 5 machines available at each location.",
+    color: "text-forest",
+    bgColor: "bg-forest/10",
+  },
+  {
+    title: "Magnanimous Matriarchs",
+    amount: "$10,000+",
+    icon: Crown,
+    description: "Our ultimate caretakers, supporting the vision of a Herd Hub where girls and women come together to encourage, engage, and empower each other.",
+    color: "text-purple-500",
+    bgColor: "bg-purple-500/10",
   }
 ]
 
-export function HerdNeedsSection() {
+export function DonationTiersSection() {
   return (
-    <section className="container py-24 relative">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-primary/5 via-primary/10 to-transparent" />
-      
-      <motion.div
+    <Section className="bg-gradient-to-b from-background to-primary/5">
+      <motion.div 
+        className="text-center mb-8 sm:mb-16 px-4"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="text-center mb-16"
       >
-        <h2 className="heading-2 mb-4">Our Herd Needs You</h2>
-        <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-          Join us in our mission to empower Kenyan women and girls. There are many ways you can contribute to making a difference.
+        <h2 className={cn(
+          "font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-primary",
+          "tracking-tight leading-tight"
+        )}>
+          Sustain the Herd
+        </h2>
+        <p className={cn(
+          "text-lg md:text-xl text-muted-foreground mb-8",
+          "max-w-2xl mx-auto leading-relaxed"
+        )}>
+          Your support helps us continue our mission of empowering Kenyan women and girls. Choose a donation tier that resonates with you.
         </p>
       </motion.div>
 
-      <div className="grid gap-8 md:grid-cols-3">
-        {opportunities.map((opportunity, index) => {
-          const Icon = opportunity.icon
-          return (
-            <motion.div
-              key={opportunity.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-            >
-              <Card className="h-full">
-                <CardHeader>
-                  <Icon className="h-12 w-12 text-primary mb-4" />
-                  <CardTitle>{opportunity.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-muted-foreground">
-                    {opportunity.description}
-                  </p>
-                  <Button className="w-full" asChild>
-                    <Link href={opportunity.action.href}>
-                      {opportunity.action.text}
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            </motion.div>
-          )}
-        )}
+      <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 px-4 sm:px-6">
+        {donationTiers.map((tier, index) => (
+          <motion.div
+            key={tier.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
+          >
+            <Card className="h-full transition-transform duration-300 hover:scale-105">
+              <CardContent className="p-4 sm:p-6">
+                <div className="flex items-start sm:items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                  <div className={cn(
+                    "p-2 sm:p-3 rounded-full shrink-0",
+                    tier.bgColor,
+                    tier.color
+                  )}>
+                    <tier.icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-serif text-primary">
+                      {tier.title}
+                    </h3>
+                    {tier.amount && (
+                      <p className="text-sm sm:text-base font-medium text-muted-foreground">
+                        {tier.amount}
+                      </p>
+                    )}
+                  </div>
+                </div>
+                
+                <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6">
+                  {tier.description}
+                </p>
+
+                <LogoButton
+                  href={`/donate?tier=${tier.title.toLowerCase().replace(/\s+/g, '-')}`}
+                  variant="default"
+                  className="w-full text-sm sm:text-base"
+                >
+                  {tier.amount ? 'Donate' : 'Learn More'}
+                </LogoButton>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
       </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.3, duration: 0.5 }}
-        className="mt-16 text-center"
-      >
-        <p className="text-muted-foreground mb-6">
-          Have questions about how you can help? We&apos;d love to hear from you!
-        </p>
-        <Button variant="outline" size="lg" asChild>
-          <Link href="/contact">Contact Us</Link>
-        </Button>
-      </motion.div>
-    </section>
+    </Section>
   )
-} 
+}
+
+export default DonationTiersSection

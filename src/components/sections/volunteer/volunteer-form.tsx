@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
-import { Button } from '@/components/ui/button'
+import { LogoButton } from "@/components/shared/logobutton"
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { toast } from 'sonner'
@@ -139,15 +139,17 @@ export function VolunteerForm() {
         <label className="text-sm font-medium">Areas of Interest</label>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {volunteerInterests.map((interest) => (
-            <Button
+            <LogoButton
               key={interest.id}
               type="button"
               variant={selectedInterests.includes(interest.id) ? 'default' : 'outline'}
-              className="h-auto py-2 px-4 text-sm"
+              size="sm"
+              textStyle={selectedInterests.includes(interest.id) ? 'glow' : 'default'}
+              focusStyle="ring"
               onClick={() => toggleInterest(interest.id)}
             >
               {interest.label}
-            </Button>
+            </LogoButton>
           ))}
         </div>
         {form.formState.errors.interests && (
@@ -194,13 +196,17 @@ export function VolunteerForm() {
         />
       </div>
 
-      <Button
+      <LogoButton
         type="submit"
-        className="w-full"
-        disabled={isSubmitting}
+        variant="default"
+        textStyle="shadow"
+        focusStyle="glow"
+        isLoading={isSubmitting}
+        loadingText="Submitting..."
+        className="w-full sm:w-auto"
       >
-        {isSubmitting ? 'Submitting...' : 'Submit Volunteer Application'}
-      </Button>
+        Submit Application
+      </LogoButton>
     </form>
   )
 }

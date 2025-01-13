@@ -2,9 +2,11 @@
 
 import { PageTransition } from '@/components/page-transition'
 import { Container } from '@/components/ui/container'
-import { InitiativesShowcase } from '@/components/sections/initiatives-showcase'
+// import { InitiativesShowcase } from '@/components/sections/initiatives-showcase'
 import { useEffect, useState } from 'react'
 import { Initiative } from '@/types/Initiative'
+import HerdInitiativesSection from '@/components/sections/initiatives-showcase'
+import { LogoButton } from '@/components/shared/logobutton'
 
 export default function InitiativesPage() {
   const [initiatives, setInitiatives] = useState<Initiative[]>([])
@@ -34,7 +36,12 @@ export default function InitiativesPage() {
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <InitiativesShowcase initiatives={initiatives} />
+            // <InitiativesShowcase initiatives={initiatives} />
+            <>
+              
+                <HerdInitiativesSection /><LogoButton>
+                  Support Our Initiatives
+                </LogoButton></>
           )}
         </div>
       </Container>

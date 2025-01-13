@@ -5,8 +5,9 @@ import { RTLProvider } from "@/components/i18n/rtl-provider"
 import { ToastProvider } from '@/components/ui/toast';
 import { Toast } from "@/components/ui/toast"
 import { Navigation } from "@/components/navigation"
-import { Footer } from "@/components/footer"
+// import { Footer } from "@/components/footer"
 import "@/styles/globals.css"
+import { Footer } from '@/components/shared/footer';
 
 const montserrat = Montserrat({ 
   subsets: ['latin'],

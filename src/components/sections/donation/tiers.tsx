@@ -1,6 +1,5 @@
 "use client"
 
-
 export interface DonationTier {
   id: string
   name: string
@@ -8,79 +7,103 @@ export interface DonationTier {
   description: string
   impact: string
   icon: string
+  imagePath: string
 }
 
 export const donationTiers: DonationTier[] = [
   {
-    id: 'tier1',
-    name: 'Friend',
+    id: 'baby-elephant',
+    name: 'Baby Elephant',
     amount: 25,
-    description: 'Provides menstrual pads for one girl for a full year',
-    impact: 'Help a girl stay in school and maintain her dignity',
-    icon: '🌱',
+    description: 'Support our youngest members with essential resources',
+    impact: 'Provide menstrual supplies for one girl for a full year, enabling her to stay in school with dignity',
+    icon: '🐘',
+    imagePath: '/images/logo/0.jpg'
   },
   {
-    id: 'tier2',
-    name: 'Supporter',
+    id: 'sister-elephant',
+    name: 'Sister Elephant',
     amount: 50,
-    description: 'Supplies sewing materials for pad-making training',
-    impact: 'Enable sustainable pad production in local communities',
-    icon: '🧵',
+    description: 'Join our sisterhood of supporters making a direct impact',
+    impact: 'Fund training materials and supplies for pad-making workshops, empowering local production',
+    icon: '🦒',
+    imagePath: '/images/logo/0.jpg'
   },
   {
-    id: 'tier3',
-    name: 'Champion',
+    id: 'mother-elephant',
+    name: 'Mother Elephant',
     amount: 100,
-    description: 'Sponsors a full training session for one woman',
-    impact: 'Empower a woman with skills for economic independence',
-    icon: '💪',
+    description: 'Nurture our community growth and development',
+    impact: 'Sponsor a complete training program for one woman, creating sustainable income opportunities',
+    icon: '🌍',
+    imagePath: '/images/logo/0.jpg'
   },
   {
-    id: 'tier4',
-    name: 'Guardian',
+    id: 'matriarch-elephant',
+    name: 'Matriarch Elephant',
     amount: 250,
-    description: 'Provides a sewing machine for a community group',
-    impact: 'Create sustainable income opportunities for multiple families',
-    icon: '🎁',
+    description: 'Lead the way in creating lasting change',
+    impact: 'Provide a sewing machine and startup materials for a community group of women',
+    icon: '👑',
+    imagePath: '/images/logo/0.jpg'
   },
   {
-    id: 'tier5',
-    name: 'Visionary',
+    id: 'herd-guardian',
+    name: 'Herd Guardian',
     amount: 500,
-    description: 'Establishes a complete pad-making station',
-    impact: 'Transform an entire community with sustainable resources',
-    icon: '⭐',
-  },
+    description: 'Protect and sustain our entire community',
+    impact: 'Establish a complete pad-making station that can serve multiple communities',
+    icon: '✨',
+    imagePath: '/images/logo/0.jpg'
+  }
 ]
 
 interface DonationTiersProps {
-  selectedTier: DonationTier | null
-  onSelect: (tier: DonationTier) => void
+  selectedTierId: string
+  onSelectTier: (tier: DonationTier) => void
 }
 
-export function DonationTiers({ selectedTier, onSelect }: DonationTiersProps) {
+export function DonationTiers({ selectedTierId, onSelectTier }: DonationTiersProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
       {donationTiers.map((tier) => (
         <div
           key={tier.id}
           className={`
-            relative p-6 rounded-lg border transition-all duration-200 cursor-pointer
-            hover:border-primary hover:shadow-md
-            ${selectedTier?.id === tier.id ? 'border-primary bg-primary/5' : 'border-neutral-200'}
+            relative overflow-hidden rounded-lg border-2 transition-all duration-300 cursor-pointer
+            hover:border-primary-500 hover:shadow-xl
+            ${selectedTierId === tier.id ? 'border-primary-500 bg-primary-50' : 'border-accent-beige'}
           `}
-          onClick={() => onSelect(tier)}
+          onClick={() => onSelectTier(tier)}
         >
-          <div className="text-4xl mb-4">{tier.icon}</div>
-          <h3 className="text-xl font-heading font-semibold mb-2">{tier.name}</h3>
-          <p className="text-2xl font-serif text-primary mb-4">${tier.amount}</p>
-          <p className="text-neutral-600 mb-3">{tier.description}</p>
-          <p className="text-sm text-neutral-500 italic">Impact: {tier.impact}</p>
+          <div className="relative h-48 overflow-hidden">
+            <img
+              src={tier.imagePath}
+              alt={tier.name}
+              className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="absolute bottom-4 left-4 right-4">
+              <div className="flex items-center gap-2">
+                <span className="text-2xl">{tier.icon}</span>
+                <h3 className="text-xl font-crimson text-white">{tier.name}</h3>
+              </div>
+              <p className="text-2xl font-crimson text-primary-100">${tier.amount}</p>
+            </div>
+          </div>
           
-          {selectedTier?.id === tier.id && (
-            <div className="absolute top-3 right-3">
-              <div className="w-4 h-4 rounded-full bg-primary flex items-center justify-center">
-                <div className="w-2 h-2 rounded-full bg-white" />
+          <div className="p-6 bg-white">
+            <p className="text-lg text-neutral-700 mb-4">{tier.description}</p>
+            <div className="bg-accent-beige/30 p-4 rounded-lg">
+              <h4 className="text-sm font-montserrat uppercase text-secondary-500 mb-2">Your Impact</h4>
+              <p className="text-sm text-neutral-600">{tier.impact}</p>
+            </div>
+          </div>
+          
+          {selectedTierId === tier.id && (
+            <div className="absolute top-4 right-4">
+              <div className="w-6 h-6 rounded-full bg-primary-500 flex items-center justify-center">
+                <div className="w-3 h-3 rounded-full bg-white" />
               </div>
             </div>
           )}
