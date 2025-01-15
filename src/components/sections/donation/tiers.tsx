@@ -1,114 +1,133 @@
 "use client"
 
+import { Section } from '@/components/ui/section'
+import { motion } from 'framer-motion'
+import { theme } from '@/lib/theme'
+import { cn } from '@/lib/utils'
+import { Card, CardContent } from '@/components/ui/card'
+import { LogoButton } from '@/components/shared/logobutton'
+import { Heart, Footprints, Droplets, Trees, Crown, HandHeart } from 'lucide-react'
+
 export interface DonationTier {
   id: string
-  name: string
-  amount: number
+  title: string
+  amount?: string
   description: string
-  impact: string
-  icon: string
-  imagePath: string
+  icon: React.ElementType
+  color: string
+  bgColor: string
+  stripeProductId?: string
 }
 
-export const donationTiers: DonationTier[] = [
+const donationTiers: DonationTier[] = [
   {
-    id: 'baby-elephant',
-    name: 'Baby Elephant',
-    amount: 25,
-    description: 'Support our youngest members with essential resources',
-    impact: 'Provide menstrual supplies for one girl for a full year, enabling her to stay in school with dignity',
-    icon: '🐘',
-    imagePath: '/images/logo/0.jpg'
+    id: 'herd-hands',
+    title: "Herd Hands",
+    description: "Reflecting the way elephants lift and support each other with their trunks, these are the volunteers who amplify the Sisterherd mission through their selfless actions.",
+    icon: HandHeart,
+    color: "text-amber-500",
+    bgColor: "bg-amber-500/10",
   },
   {
-    id: 'sister-elephant',
-    name: 'Sister Elephant',
-    amount: 50,
-    description: 'Join our sisterhood of supporters making a direct impact',
-    impact: 'Fund training materials and supplies for pad-making workshops, empowering local production',
-    icon: '🦒',
-    imagePath: '/images/logo/0.jpg'
+    id: 'tiny-tusks',
+    title: "Tiny Tusks",
+    amount: "Up to $99",
+    description: "Symbolizing young elephants, just beginning their journey. Your donation buys fabric, thread, and supplies for pads. $15 supports one 4-pad package.",
+    icon: Heart,
+    color: "text-rose-500",
+    bgColor: "bg-rose-500/10",
+    stripeProductId: 'prod_tiny_tusks'
   },
   {
-    id: 'mother-elephant',
-    name: 'Mother Elephant',
-    amount: 100,
-    description: 'Nurture our community growth and development',
-    impact: 'Sponsor a complete training program for one woman, creating sustainable income opportunities',
-    icon: '🌍',
-    imagePath: '/images/logo/0.jpg'
-  },
-  {
-    id: 'matriarch-elephant',
-    name: 'Matriarch Elephant',
-    amount: 250,
-    description: 'Lead the way in creating lasting change',
-    impact: 'Provide a sewing machine and startup materials for a community group of women',
-    icon: '👑',
-    imagePath: '/images/logo/0.jpg'
-  },
-  {
-    id: 'herd-guardian',
-    name: 'Herd Guardian',
-    amount: 500,
-    description: 'Protect and sustain our entire community',
-    impact: 'Establish a complete pad-making station that can serve multiple communities',
-    icon: '✨',
-    imagePath: '/images/logo/0.jpg'
+    id: 'footprint-friends',
+    title: "Footprint Friends",
+    amount: "$100 - $999",
+    description: "Representing deep footprints that elephants make. Contributes towards purchasing sewing machines ($250-$500 per machine including transportation).",
+    icon: Footprints,
+    color: "text-emerald-500",
+    bgColor: "bg-emerald-500/10",
+    stripeProductId: 'prod_footprint_friends'
   }
 ]
 
 interface DonationTiersProps {
-  selectedTierId: string
+  selectedTierId?: string
   onSelectTier: (tier: DonationTier) => void
 }
 
-export function DonationTiers({ selectedTierId, onSelectTier }: DonationTiersProps) {
+export function DonationTiersSection({ selectedTierId, onSelectTier }: DonationTiersProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-      {donationTiers.map((tier) => (
-        <div
-          key={tier.id}
-          className={`
-            relative overflow-hidden rounded-lg border-2 transition-all duration-300 cursor-pointer
-            hover:border-primary-500 hover:shadow-xl
-            ${selectedTierId === tier.id ? 'border-primary-500 bg-primary-50' : 'border-accent-beige'}
-          `}
-          onClick={() => onSelectTier(tier)}
-        >
-          <div className="relative h-48 overflow-hidden">
-            <img
-              src={tier.imagePath}
-              alt={tier.name}
-              className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4">
-              <div className="flex items-center gap-2">
-                <span className="text-2xl">{tier.icon}</span>
-                <h3 className="text-xl font-crimson text-white">{tier.name}</h3>
-              </div>
-              <p className="text-2xl font-crimson text-primary-100">${tier.amount}</p>
-            </div>
-          </div>
-          
-          <div className="p-6 bg-white">
-            <p className="text-lg text-neutral-700 mb-4">{tier.description}</p>
-            <div className="bg-accent-beige/30 p-4 rounded-lg">
-              <h4 className="text-sm font-montserrat uppercase text-secondary-500 mb-2">Your Impact</h4>
-              <p className="text-sm text-neutral-600">{tier.impact}</p>
-            </div>
-          </div>
-          
-          {selectedTierId === tier.id && (
-            <div className="absolute top-4 right-4">
-              <div className="w-6 h-6 rounded-full bg-primary-500 flex items-center justify-center">
-                <div className="w-3 h-3 rounded-full bg-white" />
-              </div>
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
+    <Section className="bg-gradient-to-b from-background to-primary/5">
+      <motion.div 
+        className="text-center mb-16"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
+        <h2 className={cn(
+          theme.typography.sizes.h2,
+          "font-serif text-primary mb-6"
+        )}>
+          HELP US MAKE TRACKS
+        </h2>
+        <p className={cn(
+          theme.typography.sizes.body,
+          "text-muted-foreground max-w-3xl mx-auto"
+        )}>
+          Each tier reflects the vital roles of female elephants and shows what your contribution 
+          means to the Sisterherd Strong Pad Project. All donations go directly to our projects 
+          with no administrative costs.
+        </p>
+      </motion.div>
+
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {donationTiers.map((tier, index) => (
+          <motion.div
+            key={tier.id}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
+            onClick={() => tier.stripeProductId && onSelectTier(tier)}
+            className={cn(
+              "cursor-pointer transition-transform duration-300",
+              tier.stripeProductId && "hover:scale-105"
+            )}
+          >
+            <Card className={cn(
+              "h-full",
+              selectedTierId === tier.id && "ring-2 ring-primary"
+            )}>
+              <CardContent className="p-6">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className={cn("p-3 rounded-full", tier.bgColor, tier.color)}>
+                    <tier.icon className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-serif text-primary">{tier.title}</h3>
+                    {tier.amount && (
+                      <p className="text-sm font-medium text-muted-foreground">
+                        {tier.amount}
+                      </p>
+                    )}
+                  </div>
+                </div>
+                <p className="text-muted-foreground mb-6">
+                  {tier.description}
+                </p>
+                <LogoButton
+                  href={tier.stripeProductId ? undefined : '/contact'}
+                  variant="default"
+                  className="w-full"
+                  onClick={() => tier.stripeProductId && onSelectTier(tier)}
+                >
+                  {tier.stripeProductId ? 'Select' : 'Contact Us'}
+                </LogoButton>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
+      </div>
+    </Section>
   )
 }
