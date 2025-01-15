@@ -1,34 +1,32 @@
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Container } from '../ui/container';
 import { cn } from '@/lib/utils';
-import styles from './PremiumHeroSection.module.css';
 
 export function PremiumHeroSection() {
   return (
-    <div 
-      className={cn(
-        "relative w-full min-h-screen bg-no-repeat bg-cover bg-center",
-        styles.heroBackground
-      )}
-      style={{
-        backgroundImage: 'url("/images/logo/hero/hero.webp")'
-      }}
-    >
-      {/* Content Wrapper */}
-      <div className="flex flex-col min-h-screen">
-        {/* Top Content */}
-        <div className="pt-10">
+    <div className="relative w-full h-screen">
+      <div className="absolute inset-0 bg-[url('/path/to/subtle-pattern.png')] opacity-5" />
+      
+      {/* Main content wrapper */}
+      <div className="relative w-full h-full flex flex-col justify-between py-8">
+        {/* Header Content */}
+        <div className="w-full z-10">
           <Container>
-            <div className="max-w-3xl mx-auto text-center">
+            <div className="mx-auto max-w-3xl text-center">
               <motion.h1
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 className={cn(
-                  "text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl",
-                  "font-serif font-extrabold",
-                  "tracking-wider",
-                  "text-emerald-400"
+                  "text-4xl md:text-5xl lg:text-6xl",
+                  "font-['Playfair_Display']",
+                  "font-bold",
+                  "tracking-wide",
+                  "text-emerald-400",
+                  "drop-shadow-md",
+                  "transform-gpu",
+                  "transition-colors duration-300",
                 )}
               >
                 E3 KENYA
@@ -39,9 +37,13 @@ export function PremiumHeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
                 className={cn(
-                  "text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl",
-                  "font-bold tracking-wide mt-2 sm:mt-4",
-                  "text-emerald-400"
+                  "text-3xl md:text-4xl lg:text-5xl",
+                  "font-['Montserrat']",
+                  "font-semibold tracking-wide mt-2",
+                  "text-emerald-400",
+                  "drop-shadow-md",
+                  "transform-gpu",
+                  "transition-colors duration-300"
                 )}
               >
                 SISTERHERD STRONG
@@ -50,11 +52,30 @@ export function PremiumHeroSection() {
           </Container>
         </div>
 
-        {/* Bottom Content - Using margin-top: auto to push to bottom */}
-        <div className="mt-auto mb-12">
+        {/* Image Container - Full Width */}
+{/* Image Container - Full Width */}
+<div className="relative w-full h-[50vh] md:h-[60vh] lg:h-[70vh]">
+  <Image
+    src="/images/logo/hero/hero.webp"
+    alt="Group of smiling girls representing E3 Kenya"
+    fill
+    priority
+    quality={90}
+    className="object-cover"
+    sizes="(max-width: 768px) 100vw, 
+           (max-width: 1200px) 100vw, 
+           100vw"
+    style={{
+      objectPosition: 'center', // Centered vertically and horizontally
+    }}
+  />
+</div>
+
+        {/* Mission Words */}
+        <div className="w-full z-10">
           <Container>
             <motion.div 
-              className="flex justify-center items-center gap-x-4 sm:gap-x-6 md:gap-x-8 lg:gap-x-12 flex-wrap"
+              className="flex justify-center items-center gap-x-6 md:gap-x-10 gap-y-3 flex-wrap backdrop-blur-sm bg-white/10 py-4 px-6 rounded-full max-w-4xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
@@ -70,12 +91,18 @@ export function PremiumHeroSection() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.6 + (index * 0.2), duration: 0.6 }}
                   className={cn(
-                    "text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl",
+                    "text-2xl md:text-3xl lg:text-4xl",
+                    "font-['Raleway']",
                     "font-bold",
                     color,
-                    "transition-transform duration-300",
-                    "hover:scale-105"
+                    "drop-shadow-lg",
+                    "transition-all duration-300",
+                    "hover:scale-105",
+                    "transform-gpu"
                   )}
+                  style={{
+                    textShadow: '0 2px 4px rgba(0, 0, 0, 0.2)'
+                  }}
                 >
                   {text}
                 </motion.span>
