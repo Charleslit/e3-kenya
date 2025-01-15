@@ -10,6 +10,7 @@ import { MobileNav } from "./navigation/mobile-nav"
 import { routes } from "@/lib/routes"
 import { mainNavItems } from "@/lib/navigation"
 import { LogoButton } from "@/components/shared/logobutton"
+import { Card } from "@/components/ui/card"
 
 export function Navigation() {
   const pathname = usePathname()
@@ -24,14 +25,26 @@ export function Navigation() {
         >
           <div className="hidden md:flex md:items-center md:gap-4">
             <LogoButton
-              href={routes.donate}
-              variant="default"
-              size="sm"
-              textStyle="glow"
-              focusStyle="glow"
+              variant="emerald"
+              textStyle="emerald"
+              size="icon"
+              textSize="xl"
+              textWeight="bold"
+              rounded="full"
               darkOverlay
+              className="w-20 h-20"
+              motionConfig={{
+                hover: true,
+                tap: true,
+                gradient: true,
+                scale: 1.05
+              }}
             >
-              Donate Now
+              <Card className="bg-black/30 backdrop-blur-sm border-none px-4 py-2">
+                <span className="font-bold text-emerald-400 drop-shadow-lg">
+                  E3
+                </span>
+              </Card>
             </LogoButton>
           </div>
         </motion.div>

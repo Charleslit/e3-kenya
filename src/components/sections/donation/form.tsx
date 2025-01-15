@@ -1,15 +1,15 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { DonationTiers, type DonationTier } from "./tiers"
 import { PayPalButton } from "./paypal-button"
 import { StripePaymentElement } from "./stripe-payment-element"
+import { useToast } from "@/components/ui/use-toast"
 
 const donationSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -21,107 +21,165 @@ const donationSchema = z.object({
 
 type DonationFormData = z.infer<typeof donationSchema>
 
-export function DonationForm() {
-  const [selectedTier, setSelectedTier] = useState<DonationTier | null>(null)
+type DonationFormProps = {
+  selectedAmount?: number | null
+}
+
+export function DonationForm({ selectedAmount }: DonationFormProps) {
+  const [paymentMethod, setPaymentMethod] = useState<"stripe" | "paypal" | null>(null)
   const [clientSecret, setClientSecret] = useState<string>("")
   const [isLoading, setIsLoading] = useState(false)
+  const { toast } = useToast()
 
-  const form = useForm<DonationFormData>({
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<DonationFormData>({
     resolver: zodResolver(donationSchema),
+    mode: "onChange",
     defaultValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      amount: 0,
+      amount: selectedAmount || 0,
       isRecurring: false,
-    },
+    }
   })
 
-  const handleTierSelect = (tier: DonationTier) => {
-    setSelectedTier(tier)
-    form.setValue("amount", tier.amount)
-  }
+  useEffect(() => {
+    if (selectedAmount) {
+      setValue("amount", selectedAmount)
+    }
+  }, [selectedAmount, setValue])
 
   const onSubmit = async (data: DonationFormData) => {
     try {
       setIsLoading(true)
-      const response = await fetch("/api/create-payment-intent", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      })
+      if (paymentMethod === "stripe") {
+        const response = await fetch("/api/create-payment-intent", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...data,
+            amount: Number(data.amount), // Ensure amount is a number
+          }),
+        })
 
-      if (!response.ok) {
-        throw new Error("Failed to create payment intent")
+        if (!response.ok) {
+          const errorData = await response.json()
+          throw new Error(errorData.error || "Failed to create payment intent")
+        }
+
+        const { clientSecret } = await response.json()
+        setClientSecret(clientSecret)
+      } else if (paymentMethod === "paypal") {
+        // Process PayPal payment
+      } else {
+        toast({
+          title: "Error",
+          description: "Please select a payment method",
+          variant: "destructive",
+        })
       }
-
-      const { clientSecret } = await response.json()
-      setClientSecret(clientSecret)
     } catch (error) {
-      console.error("Payment error:", error)
+      console.error("Error processing donation:", error)
+      toast({
+        title: "Error",
+        description: "Failed to process donation. Please try again.",
+        variant: "destructive",
+      })
     } finally {
       setIsLoading(false)
     }
   }
 
   return (
-    <div className="space-y-8">
-      <DonationTiers
-        selectedTierId={selectedTier?.id ?? ''}
-        onSelectTier={handleTierSelect}
-      />
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <div className="grid gap-4 md:grid-cols-2">
+        <div>
+          <Input
+            {...register("firstName")}
+            placeholder="First Name"
+            className={errors.firstName ? "border-red-500" : ""}
+          />
+          {errors.firstName && (
+            <p className="text-sm text-red-500 mt-1">{errors.firstName.message}</p>
+          )}
+        </div>
+        <div>
+          <Input
+            {...register("lastName")}
+            placeholder="Last Name"
+            className={errors.lastName ? "border-red-500" : ""}
+          />
+          {errors.lastName && (
+            <p className="text-sm text-red-500 mt-1">{errors.lastName.message}</p>
+          )}
+        </div>
+      </div>
 
-      <Card>
-        <CardContent className="p-6">
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4" autoComplete="on">
-            <div className="grid gap-4 md:grid-cols-2">
-              <Input
-                {...form.register("firstName")}
-                placeholder="First Name"
-                className="w-full"
-                autoComplete="given-name"
-              />
-              <Input
-                {...form.register("lastName")}
-                placeholder="Last Name"
-                className="w-full"
-                autoComplete="family-name"
-              />
-            </div>
+      <div>
+        <Input
+          {...register("email")}
+          type="email"
+          placeholder="Email"
+          className={errors.email ? "border-red-500" : ""}
+        />
+        {errors.email && (
+          <p className="text-sm text-red-500 mt-1">{errors.email.message}</p>
+        )}
+      </div>
 
-            <Input
-              {...form.register("email")}
-              type="email"
-              placeholder="Email"
-              className="w-full"
-              autoComplete="email"
-            />
+      <div>
+        <Input
+          {...register("amount", {
+            valueAsNumber: true,
+            onChange: (e) => {
+              const value = parseFloat(e.target.value)
+              if (!isNaN(value)) {
+                setValue("amount", value)
+              }
+            }
+          })}
+          type="number"
+          placeholder="Amount"
+          min={1}
+          step={0.01}
+          className={errors.amount ? "border-red-500" : ""}
+        />
+        {errors.amount && (
+          <p className="text-sm text-red-500 mt-1">{errors.amount.message}</p>
+        )}
+      </div>
 
-            <Input
-              {...form.register("amount", {
-                setValueAs: (value) => (value === "" ? 0 : parseFloat(value)),
-              })}
-              type="number"
-              placeholder="Amount (USD)"
-              className="w-full"
-              value={selectedTier?.amount || form.watch("amount") || ""}
-              onChange={(e) => {
-                form.setValue("amount", parseFloat(e.target.value))
-                setSelectedTier(null)
-              }}
-              autoComplete="transaction-amount"
-            />
+      <div className="space-y-4">
+        <div className="flex gap-4">
+          <Button
+            type="button"
+            variant={paymentMethod === "stripe" ? "default" : "outline"}
+            onClick={() => setPaymentMethod("stripe")}
+            className="flex-1"
+          >
+            Credit Card
+          </Button>
+          <Button
+            type="button"
+            variant={paymentMethod === "paypal" ? "default" : "outline"}
+            onClick={() => setPaymentMethod("paypal")}
+            className="flex-1"
+          >
+            PayPal
+          </Button>
+        </div>
 
-            {clientSecret ? (
-              <StripePaymentElement clientSecret={clientSecret} />
-            ) : (
-              <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? "Processing..." : "Continue to Payment"}
-              </Button>
-            )}
-          </form>
-        </CardContent>
-      </Card>
-    </div>
+        {paymentMethod === "stripe" && clientSecret && <StripePaymentElement clientSecret={clientSecret} />}
+        {paymentMethod === "paypal" && <PayPalButton amount={0} onSuccess={function (details: any): void {
+          throw new Error("Function not implemented.")
+        } } />}
+      </div>
+
+      <Button type="submit" className="w-full" disabled={isLoading}>
+        {isLoading ? "Processing..." : "Complete Donation"}
+      </Button>
+    </form>
   )
-} 
+}

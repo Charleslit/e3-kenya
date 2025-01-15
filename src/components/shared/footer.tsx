@@ -7,6 +7,7 @@ import { Facebook, Instagram, Twitter, Youtube, Mail } from 'lucide-react'
 import { LogoButton } from "./logobutton"
 import { footerNavItems, routes } from "@/lib/routes"
 import { Input } from "../ui/input"
+import { Card } from "../ui/card"
 
 const socialLinks = [
   { icon: Facebook, href: "https://facebook.com/e3kenya", label: "Facebook" },
@@ -59,13 +60,29 @@ export function Footer() {
             className="space-y-6"
           >
             <Link href={routes.home} className="inline-block">
-              <Image
-                src="/images/logo/logo.png"
-                alt="E3 Kenya Logo"
-                width={120}
-                height={60}
-                className="h-12 w-auto"
-              />
+              <LogoButton 
+                variant="emerald"
+                textStyle="emerald"
+                size="icon"
+                textSize="xl"
+                textWeight="bold"
+                rounded="full"
+                darkOverlay
+                className="w-24 h-24"
+                motionConfig={{
+                  hover: true,
+                  tap: true,
+                  gradient: true,
+                  scale: 1.05
+                }}
+              >
+                <Card className="bg-black/30 backdrop-blur-sm border-none px-6 py-3">
+                  <span className="flex flex-col items-center font-bold text-emerald-400 drop-shadow-lg">
+                    <span>E3</span>
+                    <span>KENYA</span>
+                  </span>
+                </Card>
+              </LogoButton>
             </Link>
             <p className="max-w-md text-sm text-muted-foreground">
               Empowering communities through education, entrepreneurship, and environmental conservation in Kenya.
@@ -156,7 +173,7 @@ export function Footer() {
         >
           <div className="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} E3 Kenya. All rights reserved.{" "}
+              &copy; {new Date().getFullYear()} E3 Kenya. All rights reserved.{" "}
               <span className="text-primary">Sisterherd Strong</span>
             </p>
             <div className="flex space-x-6 text-sm text-muted-foreground">
@@ -176,4 +193,3 @@ export function Footer() {
     </footer>
   )
 }
-

@@ -3,8 +3,17 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 
-const paymentMethods = [
+interface PaymentMethod {
+  name: string
+  icon: string
+  description: string
+  badge?: string
+  onClick?: () => void
+}
+
+const paymentMethods: PaymentMethod[] = [
   {
     name: "Credit Card",
     icon: "/images/payment/credit-card.svg",
@@ -44,6 +53,8 @@ export function PaymentMethods() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
+            className="cursor-pointer transition-transform hover:scale-105"
+            onClick={method.onClick}
           >
             <Card className="h-full">
               <CardContent className="p-6 flex flex-col items-center text-center">
@@ -56,13 +67,29 @@ export function PaymentMethods() {
                   />
                 </div>
                 <h3 className="font-semibold mb-2">{method.name}</h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-muted-foreground mb-4">
                   {method.description}
                 </p>
+                {method.badge && (
+                  <Badge variant="secondary" className="mt-auto">
+                    {method.badge}
+                  </Badge>
+                )}
               </CardContent>
             </Card>
           </motion.div>
         ))}
+      </div>
+      
+      <div className="mt-8 text-center">
+        <p className="text-sm text-muted-foreground">
+          All payments are secure and encrypted. We never store your payment details.
+          <br />
+          Questions? Contact us at{" "}
+          <a href="mailto:support@e3kenya.org" className="text-primary hover:underline">
+            support@e3kenya.org
+          </a>
+        </p>
       </div>
     </section>
   )

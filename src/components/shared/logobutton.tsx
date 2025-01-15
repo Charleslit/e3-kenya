@@ -7,7 +7,8 @@ import { cn } from "@/lib/utils"
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { Loader2 } from "lucide-react"
+import { Loader2 } from 'lucide-react'
+import { Card } from "../ui/card"
 
 const logoButtonVariants = cva(
   "relative inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 overflow-hidden group",
@@ -21,17 +22,20 @@ const logoButtonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         image: "border-2 border-primary text-primary-foreground hover:border-primary/80",
+        emerald: "bg-emerald-400/10 text-emerald-400 hover:bg-emerald-400/20",
       },
       size: {
         default: "h-12 px-6 py-3",
         sm: "h-10 px-4",
         lg: "h-14 px-8",
+        xl: "h-16 px-10",
         icon: "h-12 w-12",
       },
       rounded: {
         default: "rounded-md",
         full: "rounded-full",
         none: "rounded-none",
+        lg: "rounded-lg",
       },
       imagePlacement: {
         overlay: "relative",
@@ -44,6 +48,19 @@ const logoButtonVariants = cva(
         contain: "",
         cover: "",
       },
+      textSize: {
+        default: "text-sm",
+        lg: "text-lg",
+        xl: "text-xl md:text-2xl lg:text-3xl",
+        display: "text-2xl md:text-3xl lg:text-4xl",
+        hero: "text-3xl md:text-4xl lg:text-5xl",
+      },
+      textWeight: {
+        normal: "font-normal",
+        medium: "font-medium",
+        semibold: "font-semibold",
+        bold: "font-bold",
+      },
       textStyle: {
         default: "text-white",
         shadow: "text-white text-shadow-lg",
@@ -51,6 +68,19 @@ const logoButtonVariants = cva(
         glow: "text-white text-glow",
         contrast: "text-white mix-blend-difference",
         overlay: "text-white bg-black/40 px-3 py-1 rounded",
+        emerald: "text-emerald-400 drop-shadow-[0_4px_8px_rgba(52,211,153,0.3)] font-bold",
+      },
+      blurStyle: {
+        none: "",
+        sm: "backdrop-blur-sm",
+        md: "backdrop-blur-md",
+        lg: "backdrop-blur-lg",
+      },
+      overlayStyle: {
+        none: "",
+        light: "bg-black/20",
+        medium: "bg-black/30",
+        dark: "bg-black/40",
       },
       focusStyle: {
         ring: "focus:ring-2 focus:ring-primary focus:ring-offset-2",
@@ -71,10 +101,14 @@ const logoButtonVariants = cva(
     defaultVariants: {
       variant: "image",
       size: "default",
-      rounded: "full",
+      rounded: "lg",
       imagePlacement: "background",
       objectFit: "cover",
-      textStyle: "shadow",
+      textSize: "xl",
+      textWeight: "bold",
+      textStyle: "emerald",
+      blurStyle: "sm",
+      overlayStyle: "medium",
       focusStyle: "ring",
       sizeTransition: "smooth",
       loadingStyle: "fade",
@@ -124,11 +158,13 @@ const LogoButton = React.forwardRef<HTMLButtonElement, LogoButtonProps>(
     rounded,
     imagePlacement = "background",
     objectFit = "cover",
-    textStyle = "shadow",
+    textStyle = "emerald",
+    blurStyle = "sm",
+    overlayStyle = "medium",
     focusStyle = "ring",
     sizeTransition = "smooth",
     loadingStyle = "fade",
-    src = "/images/logo/0.jpg",
+    src = "/images/logo/elephant-logo.svg",
     alt = "Logo",
     hideImage = false,
     imageQuality = 75,
@@ -199,8 +235,10 @@ const LogoButton = React.forwardRef<HTMLButtonElement, LogoButtonProps>(
             size, 
             rounded, 
             imagePlacement, 
-            objectFit, 
+            objectFit,
             textStyle,
+            blurStyle,
+            overlayStyle,
             focusStyle,
             sizeTransition,
             loadingStyle: isLoading ? loadingStyle : "none"
@@ -230,7 +268,7 @@ const LogoButton = React.forwardRef<HTMLButtonElement, LogoButtonProps>(
             transition={{ duration: 0.3 }}
           >
             <Image
-              src={src}
+              src={src || "/placeholder.svg"}
               alt={alt}
               fill
               className={cn(
@@ -253,6 +291,7 @@ const LogoButton = React.forwardRef<HTMLButtonElement, LogoButtonProps>(
             "z-10",
             motionConfig.hover && "transition-transform duration-200",
             textGlow && "text-glow",
+            variant === 'emerald' && "font-serif",
             customTextStyles,
           )}
           initial={{ y: 0 }}
@@ -264,7 +303,9 @@ const LogoButton = React.forwardRef<HTMLButtonElement, LogoButtonProps>(
               {loadingText || children}
             </>
           ) : (
-            children
+            <Card className="border-none">
+              {children}
+            </Card>
           )}
         </motion.span>
 

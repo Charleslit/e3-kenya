@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import PremiumHeroSection from '@/components/sections/hero'
 import HerdInitiatives from '@/components/sections/initiatives-showcase'
 import { BoardMembers } from '@/components/sections/board-members'
 import initiativesJson from '@/data/initiatives.json'
@@ -16,6 +15,8 @@ import MeetTheHerdSection from '@/components/sections/volunteer/meet-the-herd'
 import SisterherdStrongSection from '@/components/SisterherdStrongSection'
 import { SectionWrapper } from '@/components/layout/wrapper'
 import SisterherdStrongSection1 from '@/components/sections/sisterhood-strong'
+import DonatePage from './donate/page'
+import { PremiumHeroSection } from '@/components/sections/hero'
 
 const initiatives = initiativesJson.initiatives as Initiative[]
 const boardMembers = boardMembersJson.boardMembers as BoardMember[]
@@ -39,7 +40,8 @@ export default function Home() {
         <HerdChroniclesSection />
       </SectionWrapper>
       <SectionWrapper>
-        <DonationTiers />
+        {/* <DonationTiers /> */}
+        <DonatePage/>
       </SectionWrapper>
     </div>
   )

@@ -1,0 +1,14 @@
+.heroBackground {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+  }
+  
+  /* Optional: Add media queries for different screen sizes */
+  @media (max-width: 768px) {
+    .heroBackground {
+      background-position: center top;
+    }
+  }

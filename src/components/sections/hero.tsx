@@ -1,111 +1,116 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { LogoButton } from '../shared/logobutton';
+import Image from 'next/image';
+import { Container } from '../ui/container';
+import { cn } from '@/lib/utils';
 
-const PremiumHeroSection = () => {
+export function PremiumHeroSection() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section with Parallax Effect */}
-      <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden">
-        {/* Parallax Background */}
-        <motion.div 
-          className="absolute inset-0 overflow-hidden"
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5 }}
-        >
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110"
-            style={{ backgroundImage: "url('/images/logo/image.png')" }}
-          />
-          {/* Reduced opacity in gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/20" />
-        </motion.div>
-        
-        {/* Content */}
-        <div className="relative z-10 container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-12"
-          >
-            {/* Main Heading with Text Shadow */}
-            <h1 className="font-serif text-6xl md:text-7xl lg:text-8xl font-bold mb-6 text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
-              SISTERHERD STRONG
-            </h1>
-            
-            {/* E3 KENYA Section */}
-            <div className="space-y-6">
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                className="inline-block"
+    <div className="relative w-full h-screen">
+      <div className="absolute inset-0 bg-[url('/path/to/subtle-pattern.png')] opacity-5" />
+      
+      {/* Main content wrapper */}
+      <div className="relative w-full h-full flex flex-col justify-between py-8">
+        {/* Header Content */}
+        <div className="w-full z-10">
+          <Container>
+            <div className="mx-auto max-w-3xl text-center">
+              <motion.h1
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className={cn(
+                  "text-4xl md:text-5xl lg:text-6xl",
+                  "font-['Playfair_Display']",
+                  "font-bold",
+                  "tracking-wide",
+                  "text-emerald-400",
+                  "drop-shadow-md",
+                  "transform-gpu",
+                  "transition-colors duration-300",
+                )}
               >
-                <Card className="bg-black/30 backdrop-blur-sm border-none px-8 py-4">
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-emerald-400 drop-shadow-lg">
-                    E3 KENYA
-                  </h2>
-                </Card>
-              </motion.div>
-              
-              {/* Tagline with Text Shadow */}
-              <div className="relative">
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold space-x-4 drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
-                  <span className="text-rose-500">Encourage</span>
-                  <span className="text-emerald-500">Engage</span>
-                  <span className="text-amber-500">Empower</span>
-                </h3>
-                <motion.div 
-                  className="absolute bottom-0 left-1/2 h-0.5 bg-gradient-to-r from-rose-500 via-emerald-500 to-amber-500"
-                  initial={{ width: 0, x: '-50%' }}
-                  animate={{ width: '50%' }}
-                  transition={{ delay: 0.8, duration: 0.8 }}
-                />
-              </div>
-            </div>
-            
-            {/* Mission Statement with Background */}
-            <div className="bg-black/30 backdrop-blur-sm rounded-lg p-6 max-w-3xl mx-auto">
-              <p className="text-xl md:text-2xl text-white leading-relaxed drop-shadow-lg">
-                Join us in empowering Kenyan women and girls through education, 
-                economic opportunities, and community support.
-              </p>
-            </div>
-            
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap justify-center gap-6">
-              <LogoButton 
-                className="bg-rose-500 hover:bg-rose-600 text-white px-8 py-6 text-lg rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-rose-500/20"
-              >
-                Help us make tracks
-              </LogoButton>
-              {/* <Button 
-                variant="outline" 
-                className="border-white text-white hover:bg-white/10 px-8 py-6 text-lg rounded-full backdrop-blur-sm transition-all duration-300"
-              >
-                Learn More
-              </Button> */}
-            </div>
-          </motion.div>
+                E3 KENYA
+              </motion.h1>
 
-          {/* Scroll Indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          >
-            <ChevronDown className="w-8 h-8 text-white drop-shadow-lg animate-bounce" />
-          </motion.div>
+              <motion.h2
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.8 }}
+                className={cn(
+                  "text-3xl md:text-4xl lg:text-5xl",
+                  "font-['Montserrat']",
+                  "font-semibold tracking-wide mt-2",
+                  "text-emerald-400",
+                  "drop-shadow-md",
+                  "transform-gpu",
+                  "transition-colors duration-300"
+                )}
+              >
+                SISTERHERD STRONG
+              </motion.h2>
+            </div>
+          </Container>
         </div>
-      </section>
+
+        {/* Image Container - Full Width */}
+{/* Image Container - Full Width */}
+<div className="relative w-full h-[50vh] md:h-[60vh] lg:h-[70vh]">
+  <Image
+    src="/images/logo/hero/hero.webp"
+    alt="Group of smiling girls representing E3 Kenya"
+    fill
+    priority
+    quality={90}
+    className="object-cover"
+    sizes="(max-width: 768px) 100vw, 
+           (max-width: 1200px) 100vw, 
+           100vw"
+    style={{
+      objectPosition: 'center', // Centered vertically and horizontally
+    }}
+  />
+</div>
+
+        {/* Mission Words */}
+        <div className="w-full z-10">
+          <Container>
+            <motion.div 
+              className="flex justify-center items-center gap-x-6 md:gap-x-10 gap-y-3 flex-wrap backdrop-blur-sm bg-white/10 py-4 px-6 rounded-full max-w-4xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+            >
+              {[
+                { text: 'Encourage', color: 'text-rose-500' },
+                { text: 'Engage', color: 'text-emerald-400' },
+                { text: 'Empower', color: 'text-zinc-900' }
+              ].map(({ text, color }, index) => (
+                <motion.span
+                  key={text}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.6 + (index * 0.2), duration: 0.6 }}
+                  className={cn(
+                    "text-2xl md:text-3xl lg:text-4xl",
+                    "font-['Raleway']",
+                    "font-bold",
+                    color,
+                    "drop-shadow-lg",
+                    "transition-all duration-300",
+                    "hover:scale-105",
+                    "transform-gpu"
+                  )}
+                  style={{
+                    textShadow: '0 2px 4px rgba(0, 0, 0, 0.2)'
+                  }}
+                >
+                  {text}
+                </motion.span>
+              ))}
+            </motion.div>
+          </Container>
+        </div>
+      </div>
     </div>
   );
-};
-
-export default PremiumHeroSection;
+}
