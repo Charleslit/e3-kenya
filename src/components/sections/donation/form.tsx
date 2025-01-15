@@ -29,7 +29,7 @@ export function DonationForm({ selectedAmount }: DonationFormProps) {
   const [paymentMethod, setPaymentMethod] = useState<"stripe" | "paypal" | null>(null)
   const [clientSecret, setClientSecret] = useState<string>("")
   const [isLoading, setIsLoading] = useState(false)
-  const toast = useToast()
+  const { toast } = useToast()
 
   const {
     register,
@@ -78,7 +78,7 @@ export function DonationForm({ selectedAmount }: DonationFormProps) {
           title: "Error",
           description: "Please select a payment method",
           variant: "destructive",
-        })  
+        })
       }
     } catch (error) {
       console.error("Error processing donation:", error)
@@ -99,15 +99,21 @@ export function DonationForm({ selectedAmount }: DonationFormProps) {
           <Input
             {...register("firstName")}
             placeholder="First Name"
-            error={errors.firstName?.message}
+            className={errors.firstName ? "border-red-500" : ""}
           />
+          {errors.firstName && (
+            <p className="text-sm text-red-500 mt-1">{errors.firstName.message}</p>
+          )}
         </div>
         <div>
           <Input
             {...register("lastName")}
             placeholder="Last Name"
-            error={errors.lastName?.message}
+            className={errors.lastName ? "border-red-500" : ""}
           />
+          {errors.lastName && (
+            <p className="text-sm text-red-500 mt-1">{errors.lastName.message}</p>
+          )}
         </div>
       </div>
 
@@ -116,8 +122,11 @@ export function DonationForm({ selectedAmount }: DonationFormProps) {
           {...register("email")}
           type="email"
           placeholder="Email"
-          error={errors.email?.message}
+          className={errors.email ? "border-red-500" : ""}
         />
+        {errors.email && (
+          <p className="text-sm text-red-500 mt-1">{errors.email.message}</p>
+        )}
       </div>
 
       <div>
@@ -135,8 +144,11 @@ export function DonationForm({ selectedAmount }: DonationFormProps) {
           placeholder="Amount"
           min={1}
           step={0.01}
-          error={errors.amount?.message}
+          className={errors.amount ? "border-red-500" : ""}
         />
+        {errors.amount && (
+          <p className="text-sm text-red-500 mt-1">{errors.amount.message}</p>
+        )}
       </div>
 
       <div className="space-y-4">

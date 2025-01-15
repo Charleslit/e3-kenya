@@ -5,7 +5,15 @@ import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
-const paymentMethods = [
+interface PaymentMethod {
+  name: string
+  icon: string
+  description: string
+  badge?: string
+  onClick?: () => void
+}
+
+const paymentMethods: PaymentMethod[] = [
   {
     name: "Credit Card",
     icon: "/images/payment/credit-card.svg",
@@ -46,7 +54,7 @@ export function PaymentMethods() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
             className="cursor-pointer transition-transform hover:scale-105"
-            onClick={() => method.onClick && method.onClick()}
+            onClick={method.onClick}
           >
             <Card className="h-full">
               <CardContent className="p-6 flex flex-col items-center text-center">
