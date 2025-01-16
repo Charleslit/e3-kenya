@@ -9,71 +9,71 @@ import { Newspaper } from 'lucide-react'
 import Image from 'next/image'
 import { getImages } from '@/lib/images'
 
-function StoriesSection() {
-  const storyImages = getImages({
-    category: 'testimonials',
-    count: 3,
-    tags: ['community', 'training'],
-    shuffle: true
-  })
+// function StoriesSection() {
+//   const storyImages = getImages({
+//     category: 'testimonials',
+//     count: 3,
+//     tags: ['community', 'training'],
+//     shuffle: true
+//   })
 
-  const stories = [
-    {
-      title: "The Birth of Osiligi Pad Project",
-      date: "December 2024",
-      excerpt: "How a community-inspired initiative is changing lives in Maasai Mara",
-      image: storyImages[0].path,
-      description: storyImages[0].description
-    },
-    {
-      title: "Training Sessions: A Journey of Empowerment",
-      date: "October 2024",
-      excerpt: "25 women and 10 adolescent girls learn valuable skills in pad-making",
-      image: storyImages[1].path,
-      description: storyImages[1].description
-    },
-    {
-      title: "Expanding Our Reach",
-      date: "January 2025",
-      excerpt: "From Maasai Mara to Nairobi: The growing impact of our initiatives",
-      image: storyImages[2].path,
-      description: storyImages[2].description
-    }
-  ]
+//   const stories = [
+//     {
+//       title: "The Birth of Osiligi Pad Project",
+//       date: "December 2024",
+//       excerpt: "How a community-inspired initiative is changing lives in Maasai Mara",
+//       image: storyImages[0].path,
+//       description: storyImages[0].description
+//     },
+//     {
+//       title: "Training Sessions: A Journey of Empowerment",
+//       date: "October 2024",
+//       excerpt: "25 women and 10 adolescent girls learn valuable skills in pad-making",
+//       image: storyImages[1].path,
+//       description: storyImages[1].description
+//     },
+//     {
+//       title: "Expanding Our Reach",
+//       date: "January 2025",
+//       excerpt: "From Maasai Mara to Nairobi: The growing impact of our initiatives",
+//       image: storyImages[2].path,
+//       description: storyImages[2].description
+//     }
+//   ]
 
-  return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-      {stories.map((story, index) => (
-        <motion.div
-          key={story.title}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.1 }}
-        >
-          <Card className="overflow-hidden h-full">
-            <div className="relative h-48">
-              <Image
-                src={story.image}
-                alt={story.description || story.title}
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="p-6">
-              <div className="text-sm text-muted-foreground mb-2">{story.date}</div>
-              <h3 className="text-xl font-crimson font-semibold mb-2">{story.title}</h3>
-              <p className="text-muted-foreground mb-4">{story.excerpt}</p>
-              <Button variant="outline" className="w-full">
-                <Newspaper className="w-4 h-4 mr-2" />
-                Read Story
-              </Button>
-            </div>
-          </Card>
-        </motion.div>
-      ))}
-    </div>
-  )
-}
+//   return (
+//     // <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+//     //   {stories.map((story, index) => (
+//     //     <motion.div
+//     //       key={story.title}
+//     //       initial={{ opacity: 0, y: 20 }}
+//     //       animate={{ opacity: 1, y: 0 }}
+//     //       transition={{ delay: index * 0.1 }}
+//     //     >
+//     //       <Card className="overflow-hidden h-full">
+//     //         <div className="relative h-48">
+//     //           <Image
+//     //             src={story.image}
+//     //             alt={story.description || story.title}
+//     //             fill
+//     //             className="object-cover"
+//     //           />
+//     //         </div>
+//     //         <div className="p-6">
+//     //           <div className="text-sm text-muted-foreground mb-2">{story.date}</div>
+//     //           <h3 className="text-xl font-crimson font-semibold mb-2">{story.title}</h3>
+//     //           <p className="text-muted-foreground mb-4">{story.excerpt}</p>
+//     //           <Button variant="outline" className="w-full">
+//     //             <Newspaper className="w-4 h-4 mr-2" />
+//     //             Read Story
+//     //           </Button>
+//     //         </div>
+//     //       </Card>
+//     //     </motion.div>
+//     //   ))}
+//     // </div>
+//   )
+// }
 
 export default function ChroniclesPage() {
   return (
@@ -96,7 +96,7 @@ export default function ChroniclesPage() {
             </p>
           </div>
 
-          <StoriesSection />
+          {/* <StoriesSection /> */}
           <HerdChronicles />
         </motion.div>
       </Container>

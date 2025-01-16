@@ -108,28 +108,7 @@ function DonationTiers({ onSelectAmount }: { onSelectAmount: (amount: number) =>
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <LogoButton
-            src="/images/logo/elephant-logo.svg"
-            variant="emerald"
-            size="xl"
-            textStyle="emerald"
-            textSize="display"
-            textWeight="bold"
-            className="mx-auto mb-8 h-32 w-32"
-            darkOverlay
-            imageOpacity={0.85}
-            motionConfig={{
-              hover: true,
-              tap: true,
-              gradient: true,
-              scale: 1.05
-            }}
-          >
-            <span className="flex flex-col items-center gap-1">
-              <span>DONATE</span>
-              <span className="text-base font-medium">Support Our Mission</span>
-            </span>
-          </LogoButton>
+         
 
           <h2 className="text-3xl font-bold mb-6">HELP US MAKE TRACKS</h2>
           <div className="max-w-3xl mx-auto">
@@ -141,6 +120,30 @@ function DonationTiers({ onSelectAmount }: { onSelectAmount: (amount: number) =>
               Strong Pad Project. There are no administrative costs. All donations are funneled 
               directly into Herd projects.
             </p>
+
+            {/* Quick Donation Options */}
+            <div className="flex justify-center mb-12">
+              <LogoButton
+                variant="emerald"
+                textStyle="emerald"
+                size="icon"
+                textSize="display"
+                textWeight="bold"
+                rounded="full"
+                blurStyle="sm"
+                overlayStyle="medium"
+                className="w-32 h-32"
+                onClick={() => onSelectAmount(0)}
+                motionConfig={{
+                  hover: true,
+                  tap: true,
+                  gradient: true,
+                  scale: 1.05
+                }}
+              >
+                <span className="text-lg font-bold">DONATE</span>
+              </LogoButton>
+            </div>
           </div>
         </motion.div>
 
@@ -195,7 +198,7 @@ function DonationTiers({ onSelectAmount }: { onSelectAmount: (amount: number) =>
                     rounded="full"
                     blurStyle="sm"
                     overlayStyle="medium"
-                    className="w-32 h-32 mx-auto"
+                    className="w-24 h-24"
                     onClick={() => onSelectAmount(amount)}
                     motionConfig={{
                       hover: true,
@@ -204,7 +207,7 @@ function DonationTiers({ onSelectAmount }: { onSelectAmount: (amount: number) =>
                       scale: 1.05
                     }}
                   >
-                    <span className="text-4xl font-bold text-emerald-400 drop-shadow-lg">
+                    <span className="text-2xl font-bold">
                       ${amount}
                     </span>
                   </LogoButton>
@@ -218,7 +221,7 @@ function DonationTiers({ onSelectAmount }: { onSelectAmount: (amount: number) =>
                   rounded="full"
                   blurStyle="sm"
                   overlayStyle="medium"
-                  className="w-32 h-32 mx-auto"
+                  className="w-24 h-24"
                   onClick={() => onSelectAmount(0)}
                   motionConfig={{
                     hover: true,
@@ -228,8 +231,7 @@ function DonationTiers({ onSelectAmount }: { onSelectAmount: (amount: number) =>
                   }}
                 >
                   <span className="flex flex-col items-center font-bold text-emerald-400 drop-shadow-lg">
-                    <span>Other</span>
-                    <span>Amount</span>
+                   <h5>CUSTOM</h5>
                   </span>
                 </LogoButton>
               </div>

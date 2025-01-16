@@ -74,14 +74,8 @@ export function Footer() {
                   tap: true,
                   gradient: true,
                   scale: 1.05
-                }}
-              >
-                <Card className="bg-black/30 backdrop-blur-sm border-none px-6 py-3">
-                  <span className="flex flex-col items-center font-bold text-emerald-400 drop-shadow-lg">
-                    <span>E3</span>
-                    <span>KENYA</span>
-                  </span>
-                </Card>
+                }} children= ""              >
+              
               </LogoButton>
             </Link>
             <p className="max-w-md text-sm text-muted-foreground">
