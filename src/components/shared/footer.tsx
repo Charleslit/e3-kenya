@@ -1,13 +1,11 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
 import { motion } from "framer-motion"
-import { Facebook, Instagram, Twitter, Youtube, Mail } from 'lucide-react'
+import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react'
 import { LogoButton } from "./logobutton"
-import { footerNavItems, routes } from "@/lib/routes"
+import { routes } from "@/lib/routes"
 import { Input } from "../ui/input"
-import { Card } from "../ui/card"
 
 const socialLinks = [
   { icon: Facebook, href: "https://facebook.com/e3kenya", label: "Facebook" },
@@ -74,9 +72,8 @@ export function Footer() {
                   tap: true,
                   gradient: true,
                   scale: 1.05
-                }} children= ""              >
-              
-              </LogoButton>
+                }}
+              >"</LogoButton>
             </Link>
             <p className="max-w-md text-sm text-muted-foreground">
               Empowering communities through education, entrepreneurship, and environmental conservation in Kenya.
