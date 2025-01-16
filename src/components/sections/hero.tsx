@@ -5,111 +5,105 @@ import { cn } from '@/lib/utils';
 
 export function PremiumHeroSection() {
   return (
-    <div className="relative w-full h-screen">
-      <div className="absolute inset-0 bg-[url('/path/to/subtle-pattern.png')] opacity-5" />
-      
-      {/* Main content wrapper */}
-      <div className="relative w-full h-full flex flex-col justify-between py-8">
-        {/* Header Content */}
-        <div className="w-full z-10">
-          <Container>
-            <div className="mx-auto max-w-3xl text-center">
-              <motion.h1
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className={cn(
-                  "text-4xl md:text-5xl lg:text-6xl",
-                  "font-['Playfair_Display']",
-                  "font-bold",
-                  "tracking-wide",
-                  "text-emerald-400",
-                  "drop-shadow-md",
-                  "transform-gpu",
-                  "transition-colors duration-300",
-                )}
-              >
-                E3 KENYA
-              </motion.h1>
+    <div className="relative w-full">
+      {/* E3 KENYA Section */}
+      <div className="relative z-20 w-full bg-white py-4">
+        <Container className="text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className={cn(
+              "text-4xl md:text-5xl lg:text-6xl",
+              "font-['Playfair_Display']",
+              "font-bold",
+              "tracking-tight",
+              "bg-gradient-to-r from-emerald-600 to-emerald-400",
+              "text-transparent bg-clip-text"
+            )}
+          >
+            E3 KENYA
+          </motion.h1>
+        </Container>
+      </div>
 
-              <motion.h2
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.8 }}
-                className={cn(
-                  "text-3xl md:text-4xl lg:text-5xl",
-                  "font-['Montserrat']",
-                  "font-semibold tracking-wide mt-2",
-                  "text-emerald-400",
-                  "drop-shadow-md",
-                  "transform-gpu",
-                  "transition-colors duration-300"
-                )}
-              >
-                SISTERHERD STRONG
-              </motion.h2>
-            </div>
-          </Container>
-        </div>
-
-        {/* Image Container - Full Width */}
-{/* Image Container - Full Width */}
-<div className="relative w-full h-[50vh] md:h-[60vh] lg:h-[70vh]">
-  <Image
-    src="/images/logo/hero/hero.webp"
-    alt="Group of smiling girls representing E3 Kenya"
-    fill
-    priority
-    quality={90}
-    className="object-cover"
-    sizes="(max-width: 768px) 100vw, 
-           (max-width: 1200px) 100vw, 
-           100vw"
-    style={{
-      objectPosition: 'center', // Centered vertically and horizontally
-    }}
-  />
-</div>
-
-        {/* Mission Words */}
-        <div className="w-full z-10">
-          <Container>
-            <motion.div 
-              className="flex justify-center items-center gap-x-6 md:gap-x-10 gap-y-3 flex-wrap backdrop-blur-sm bg-white/10 py-4 px-6 rounded-full max-w-4xl mx-auto"
+      {/* Hero Image Section with SISTERHERD STRONG */}
+      <div className="relative w-full h-[50vh] md:h-[60vh] lg:h-[70vh]">
+        <Image
+          src="/images/logo/hero/hero.webp"
+          alt="E3 Kenya Background"
+          fill
+          priority
+          quality={100}
+          className="object-cover"
+          sizes="100vw"
+          style={{
+            objectPosition: 'center 25%',
+          }}
+        />
+        {/* Gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
+        
+        {/* SISTERHERD STRONG overlay */}
+        <div className="absolute inset-x-0 top-8 z-10">
+          <Container className="text-center">
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className={cn(
+                "text-xl md:text-2xl lg:text-3xl",
+                "font-['Montserrat']",
+                "font-bold",
+                "text-white",
+                "tracking-wide",
+                "drop-shadow-lg",
+                "px-4 py-2",
+                "bg-black/30",
+                "backdrop-blur-sm",
+                "rounded-lg",
+                "inline-block"
+              )}
             >
-              {[
-                { text: 'Encourage', color: 'text-rose-500' },
-                { text: 'Engage', color: 'text-emerald-400' },
-                { text: 'Empower', color: 'text-zinc-900' }
-              ].map(({ text, color }, index) => (
-                <motion.span
-                  key={text}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.6 + (index * 0.2), duration: 0.6 }}
-                  className={cn(
-                    "text-2xl md:text-3xl lg:text-4xl",
-                    "font-['Raleway']",
-                    "font-bold",
-                    color,
-                    "drop-shadow-lg",
-                    "transition-all duration-300",
-                    "hover:scale-105",
-                    "transform-gpu"
-                  )}
-                  style={{
-                    textShadow: '0 2px 4px rgba(0, 0, 0, 0.2)'
-                  }}
-                >
-                  {text}
-                </motion.span>
-              ))}
-            </motion.div>
+              SISTERHERD STRONG
+            </motion.h2>
           </Container>
         </div>
+      </div>
+
+      {/* Mission Words Section */}
+      <div className="relative z-10 w-full bg-white py-4">
+        <Container>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="flex flex-wrap justify-center gap-x-12 md:gap-x-16 gap-y-3"
+          >
+            {[
+              { text: 'ENCOURAGE', color: 'text-rose-500' },
+              { text: 'ENGAGE', color: 'text-emerald-500' },
+              { text: 'EMPOWER', color: 'text-zinc-900' }
+            ].map(({ text, color }, index) => (
+              <motion.span
+                key={text}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.7 + (index * 0.2), duration: 0.5 }}
+                className={cn(
+                  "text-2xl md:text-3xl lg:text-4xl",
+                  "font-['Raleway']",
+                  "font-bold",
+                  color,
+                  "transition-all duration-300",
+                  "hover:scale-105 cursor-default"
+                )}
+              >
+                {text}
+              </motion.span>
+            ))}
+          </motion.div>
+        </Container>
       </div>
     </div>
   );

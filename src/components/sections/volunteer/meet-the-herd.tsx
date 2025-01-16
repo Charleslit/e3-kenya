@@ -211,14 +211,29 @@ export function MeetTheHerdSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <LogoButton
-            href="/join"
-            variant="default"
-            size="lg"
-            className="inline-flex"
-          >
+                          <LogoButton
+          variant="emerald"
+          textStyle="emerald"
+          size="icon"
+          textSize="display"
+          textWeight="bold"
+          rounded="full"
+          blurStyle="sm"
+          overlayStyle="medium"
+          className="w-32 h-32 mx-auto"
+          href="/donate"
+          motionConfig={{
+            hover: true,
+            tap: true,
+            gradient: true,
+            scale: 1.05
+          }}
+        >
+          <span className="text-sm">
             Join Our Herd
-          </LogoButton>
+          </span>
+        </LogoButton>
+
         </motion.div>
       </div>
     </Section>

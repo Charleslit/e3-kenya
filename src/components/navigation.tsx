@@ -42,7 +42,6 @@ export function Navigation() {
             >
               <Card className="bg-black/30 backdrop-blur-sm border-none px-4 py-2">
                 <span className="font-bold text-emerald-400 drop-shadow-lg">
-                  E3
                 </span>
               </Card>
             </LogoButton>
